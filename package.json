@@ -8,7 +8,7 @@
   "types": "dist/types.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AppMachine/appmachine-js-block-sdk.git"
+    "url": "git+https: //github.com/AppMachine/appmachine-js-block-sdk.git"
   },
   "keywords": [
     "AppMachine",
@@ -21,13 +21,13 @@
   "author": "appmachine",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AppMachine/appmachine-js-block-sdk/issues"
+    "url": "https: //github.com/AppMachine/appmachine-js-block-sdk/issues"
   },
-  "homepage": "https://github.com/AppMachine/appmachine-js-block-sdk#readme",
+  "homepage": "https: //github.com/AppMachine/appmachine-js-block-sdk#readme",
   "scripts": {
     "test": "jest",
-    "dev": "parcel watch --no-autoinstall",
-    "build": "parcel build--no-autoinstall"
+    "dev": "parcel watch —no-autoinstall",
+    "build": "parcel build—no-autoinstall"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.7",
