@@ -1,0 +1,41 @@
+{
+  "name": "appmachine-js-block-sdk",
+  "version": "1.0.0",
+  "description": "Javascript SDK that will allow you to build your own AppMachine block",
+  "source": "src/index.ts",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AppMachine/appmachine-js-block-sdk.git"
+  },
+  "keywords": [
+    "AppMachine",
+    "CustomJS",
+    "Javascript",
+    "SDK",
+    "LowCode",
+    "Block"
+  ],
+  "author": "appmachine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AppMachine/appmachine-js-block-sdk/issues"
+  },
+  "homepage": "https://github.com/AppMachine/appmachine-js-block-sdk#readme",
+  "scripts": {
+    "test": "jest",
+    "dev": "parcel watch --no-autoinstall",
+    "build": "parcel build--no-autoinstall"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@parcel/packager-ts": "2.1.1",
+    "@parcel/transformer-typescript-types": "2.1.1",
+    "@types/jest": "^27.4.0",
+    "jest": "^27.4.7",
+    "parcel": "^2.1.1"
+  }
+}
