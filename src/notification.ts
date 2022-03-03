@@ -1,11 +1,12 @@
 export function getCurrentRecord() {
-    
+
 }
 
-export function setCurrentRecordById (activeItemId: string) {
+export function setCurrentRecordById(activeItemId: string) {
+  console.log(activeItemId);
+  
 }
 
-export function getRecords () {
-    
-}
+export function getRecords() {
 
+}

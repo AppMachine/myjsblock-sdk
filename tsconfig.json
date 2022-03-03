@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext", "dom"],
+    "strict": true,
+    "declaration": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "target": "esnext",
+    "module": "es2020",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "typeRoots": ["./src/types", "./node_modules/@types"]
+  }
+}
