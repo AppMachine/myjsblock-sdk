@@ -1,20 +1,26 @@
 import { PaginationOptions } from "../types/pagination";
 
 export enum MessageType {
-  GET_RECORDS = 'GET_RECORDS',
+  GetRecords = 'GET_RECORDS',
+  ShowAlertMessage = 'SHOW_ALERT_MESSAGE',
+  SetCurrentRecord = 'SET_CURRENT_RECORD',
+  GetCurrentRecord = 'GET_CURRENT_RECORD'
 }
 
 interface MessageData {
   type: MessageType
-  data: object
+  data?: object
   paginationOptions?: PaginationOptions
 }
 
-export const postMessage = (data: MessageData) => {
-  window.postMessage(data, '*')
+export const postMessage = (message: MessageData) => {
+  window.postMessage(message, '*')
 }
 
-export const onMessage = (type: MessageType, callback: (event: MessageEvent) => void) => {
+export const onMessage = <MessageDataResponse>(
+  type: MessageType, 
+  callback: (event: MessageEvent<MessageDataResponse>) => void
+) => {
   addEventListener('message', callback, {
     once: true,
   });

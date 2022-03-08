@@ -1,5 +1,6 @@
 import { PaginationOptions, PaginationType } from '../types/pagination';
 import { onMessage, postMessage, MessageType } from '../utils/messenger';
+import rejectOnError from '../utils/rejectOnError';
 
 interface DataSourceOption {
   dataTableId?: string
@@ -9,7 +10,8 @@ interface DataSourceOption {
 interface GetRecordsResult <DataResponse> {
   paginationType: PaginationType,
   paginationOptions: PaginationOptions
-  data: DataResponse[]
+  items: DataResponse[]
+  error?: MyJsBlockSDKError
 }
 
 // Errors that can be thrown: <code, string>
@@ -19,24 +21,26 @@ interface GetRecordsResult <DataResponse> {
 // WEB_SERVICE_ID_NOT_FOUND, 10103, provided WebServiceID is not found.
 // PAGINATION_TYPE_NOT_SUPPORTED, 10104, Requested pagination type is not supported on this data type.
 
-const getRecords = <DataResponse>(
+/**
+ * 
+ * @param dataSource 
+ * @param paginationOptions 
+ * @returns @type Promise<GetRecordsResult<DataResponse>>
+ */
+const getRecords = <DataResponse = unknown>(
   dataSource: DataSourceOption,
   paginationOptions?: PaginationOptions,
 ): Promise<GetRecordsResult<DataResponse>> => new Promise((resolve, reject) => {
-    onMessage(MessageType.GET_RECORDS, (event) => {
-      if (event.data.error) {
-        const {code, message} = event.data.error
-        const error = new Error(message)
-        error.name = code
+    onMessage<GetRecordsResult<DataResponse>>(MessageType.GetRecords, (event) => {
+      rejectOnError(reject, event)
 
-        reject(error)
-      }
-
-      resolve(event.data);
+      // TODO: Extra code parsing code..
+      
+      resolve(event.data)
     });
 
     postMessage({
-      type: MessageType.GET_RECORDS,
+      type: MessageType.GetRecords,
       data: dataSource,
       ...(paginationOptions ? { paginationOptions }: {})
     })
