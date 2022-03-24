@@ -1,5 +1,6 @@
-import { MessageType, onMessage, postMessage } from "../utils/messenger";
+import { FunctionName, onMessage, postMessage } from "../utils/messenger";
 import rejectOnError from "../utils/rejectOnError";
+import uid from "../utils/uid";
 
 interface GetCurrentRecordResult <DataResponse> {
   item: DataResponse
@@ -7,7 +8,11 @@ interface GetCurrentRecordResult <DataResponse> {
 }
 
 const getCurrentRecord = <DataResponse = unknown>() => new Promise((resolve, reject) => {
-  onMessage<GetCurrentRecordResult<DataResponse>>(MessageType.GetCurrentRecord, (event) => {
+  const requestId = uid()
+
+  onMessage<GetCurrentRecordResult<DataResponse>>(
+    requestId, 
+    (event) => {
     rejectOnError(reject, event)
 
     // TODO: Extra code parsing code..
@@ -16,7 +21,8 @@ const getCurrentRecord = <DataResponse = unknown>() => new Promise((resolve, rej
   });
 
   postMessage({
-    type: MessageType.GetCurrentRecord,
+    functionName: FunctionName.getCurrentRecord,
+    id: requestId,
   })
 })
 
