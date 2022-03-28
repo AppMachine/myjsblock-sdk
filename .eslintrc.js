@@ -20,5 +20,5 @@ module.exports = {
     rules: {
         "max-len": ["error", { code: 100, "ignoreComments": true }]
     },
-    "ignorePatterns": ["dist"],
+    "ignorePatterns": ["dist", 'vite.config.js'],
 }

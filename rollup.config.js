@@ -74,9 +74,9 @@ const configs = bundles
   .flat();
 
 const typesFileConfig = {
-  input: "./my-input/index.d.ts",
-  output: [{ file: "dist/my-library.d.ts", format: "es" }],
+  input: 'src/sdk.ts',
+  output: [{ file: `${outputDir}/${outputFileName}.d.ts`, format: "es" }],
   plugins: [dts()],
 };
 
-export default configs;
+export default [...configs, typesFileConfig];
