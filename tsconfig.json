@@ -8,7 +8,7 @@
     "noFallthroughCasesInSwitch": true,
     "importHelpers": true,
     "typeRoots": ["./src/types", "./node_modules/@types"],
-    "outDir": "./dist",
+    "outDir": "dist",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "forceConsistentCasingInFileNames": true,

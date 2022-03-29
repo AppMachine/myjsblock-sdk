@@ -36,14 +36,24 @@ const bundles = [
     inputs,
     outputDir,
   },
+  {
+    format: 'esm',
+    inputs,
+    outputDir,
+    preserveModules: true
+  }
 ];
 
 const configs = bundles
-  .map(({ inputs, outputDir, format, minify }) =>
+  .map(({ inputs, outputDir, format, minify, preserveModules }) =>
     inputs.map(input => ({
       input,
       plugins: [
-        typescript(),
+        typescript(preserveModules && {
+          compilerOptions: {
+            outDir: `${outputDir}/${format}`
+          }
+        }),
         // resolve(),
         commonJS({
           include: 'node_modules/**',
@@ -65,9 +75,14 @@ const configs = bundles
       ].filter(Boolean),
       output: {
         name: outputFileName,
-        file: `${outputDir}/${format}/${outputFileName}${minify ? '.min' : ''}.js`,
+        ...(preserveModules ? {
+          dir: `${outputDir}/${format}`,
+        } : {
+          file: `${outputDir}/${format}/${outputFileName}${minify ? '.min' : ''}.js`
+        }),
         format,
         sourcemap: true,
+        preserveModules,
       },
     })),
   )
@@ -75,7 +90,10 @@ const configs = bundles
 
 const typesFileConfig = {
   input: 'src/sdk.ts',
-  output: [{ file: `${outputDir}/${outputFileName}.d.ts`, format: "es" }],
+  output: [{
+    file: `${outputDir}/${outputFileName}.d.ts`,
+    format: "es"
+  }],
   plugins: [dts()],
 };
 

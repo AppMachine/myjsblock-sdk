@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import WindiCSS from 'vite-plugin-windicss'
 import reactRefresh from '@vitejs/plugin-react-refresh'
+import path from 'path'
 
-module.exports = defineConfig((env) => ({
+export default defineConfig((env) => ({
   // build: {
   //   lib: {
   //     entry: path.resolve(__dirname, 'src/sdk.ts'),
@@ -14,12 +15,11 @@ module.exports = defineConfig((env) => ({
     extract: {
       include: ['src/**/*.{vue,html,jsx,tsx}', 'dev/**/*.{vue,html,jsx,tsx}'],
     },
-    plugins: [reactRefresh(),, WindiCSS()],
-    // rollupOptions: {
-    //   input: {
-    //     'entry-point-a': path.resolve(__dirname, 'src/entry-point-a.tsx'),
-    //     'entry-point-b': path.resolve(__dirname, 'src/entry-point-b.tsx'),
-    //   },
-    // }
+    plugins: [reactRefresh(), WindiCSS()],
+    rollupOptions: {
+      input: {
+        'dev': path.resolve(process.cwd(), 'dev/index.html'),
+      },
+    }
   // })
 }))

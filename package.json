@@ -2,14 +2,17 @@
   "name": "@myjsblock/sdk",
   "version": "1.0.0",
   "description": "Javascript SDK that will allow you to build your own AppMachine block",
+  "type": "module",
   "source": "src/sdk.ts",
-  "types": "dist/types.d.ts",
-  "main": "./dist/myjsblock-sdk.umd.js",
-  "module": "./dist/myjsblock-sdk.es.js",
+  "main": "dist/esm/sdk.js",
+  "types": "dist/esm/sdk.d.ts",
+  "browser": "dist/myjsblock-sdk.umd.js",
+  "module": "dist/myjsblock-sdk.es.js",
   "exports": {
     ".": {
       "import": "./dist/myjsblock-sdk.es.js",
-      "require": "./dist/myjsblock-sdk.umd.js"
+      "require": "./dist/myjsblock-sdk.cjs.js",
+      "browser": "./dist/myjsblock-sdk.umd.js"
     }
   },
   "repository": {
@@ -33,8 +36,9 @@
   "scripts": {
     "test": "jest",
     "dev": "vite",
-    "build": "tsc && vite build",
-    "build:rollup": "rollup -c rollup.config.js",
+    "clean": "rm -rf dist",
+    "build:vite": "tsc && vite build",
+    "build": "npm run clean && rollup -c rollup.config.js",
     "build:skip-typecheck": "vite build",
     "preview": "vite preview"
   },
