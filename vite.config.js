@@ -4,22 +4,19 @@ import reactRefresh from '@vitejs/plugin-react-refresh'
 import path from 'path'
 
 export default defineConfig((env) => ({
-  // build: {
-  //   lib: {
-  //     entry: path.resolve(__dirname, 'src/sdk.ts'),
-  //     name: '@myjsblock/sdk',
-  //     fileName: (format) => `myjsblock-sdk.${format}.js`
-  //   },
-  // },
-  // ...(env.mode === 'development' && {
-    extract: {
-      include: ['src/**/*.{vue,html,jsx,tsx}', 'dev/**/*.{vue,html,jsx,tsx}'],
-    },
-    plugins: [reactRefresh(), WindiCSS()],
-    rollupOptions: {
-      input: {
-        'dev': path.resolve(process.cwd(), 'dev/index.html'),
+  ...(env.mode === 'development' && {
+    root: 'dev'
+  }),
+  plugins: [
+    WindiCSS({
+      scan: {
+        dirs: ['.'], // all files in the cwd
+        fileExtensions: ['ts', 'tsx'], // also enabled scanning for js/ts
       },
-    }
-  // })
+    }),
+    reactRefresh(),
+  ],
+  build: {
+    sourcemap: true,
+  },
 }))

@@ -5,7 +5,8 @@ const DEFAULT_TIMEOUT = 10000; // 10 seconds
 
 enum MessageApiErrors {
   TIMEOUT_EXCEEDED = 'TIMEOUT_EXCEEDED',
-  FUNCTION_NOT_FOUND = 'FUNCTION_NOT_FOUND'
+  FUNCTION_NOT_FOUND = 'FUNCTION_NOT_FOUND',
+  NO_VALUE_RETURNED = 'NO_VALUE_RETURNED'
 }
 
 export interface MessageErrorResponse<ErrorCodes> {
@@ -24,22 +25,38 @@ export type MessageCallback<Response, ErrorCodes> = (
   event: MessageResponse<Response> | MessageErrorResponse<ErrorCodes>
 ) => void
 
-const onMessage = <Response, ErrorCodes>(
+const addMessageListener = <Response, ErrorCodes>(
   requestId: RequestId, 
   callback: MessageCallback<Response, ErrorCodes>
 ) => {
-  let timeout: NodeJS.Timeout // eslint-disable-line prefer-const
+  let timeout: number // eslint-disable-line prefer-const
 
   const eventCallback = (event: MessageEvent<string>) => {
+    if (event.source == window) {
+      return;
+    }
+
     const response = JSON.parse(event.data)
 
-    if (response.requestId === requestId) {
-      callback(response)
-      messageApi.removeEventListener('message', eventCallback);
+    if (response.requestId !== requestId) {
+      return
+    }
+      
+    if (!response.value) {
+      callback({
+        requestId,
+        error: MessageApiErrors.NO_VALUE_RETURNED,
+        message: 'No response value returned.'
+      })
+      return
+    }
 
-      if(timeout) {
-        clearTimeout(timeout);
-      }
+    callback(response)
+    
+    messageApi.removeEventListener('message', eventCallback);
+
+    if (timeout) {
+      clearTimeout(timeout);
     }
   }
 
@@ -55,4 +72,4 @@ const onMessage = <Response, ErrorCodes>(
   messageApi.addEventListener('message', eventCallback)
 };
 
-export default onMessage
+export default addMessageListener

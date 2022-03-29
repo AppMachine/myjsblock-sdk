@@ -1,7 +1,7 @@
-import useFunction, { FunctionName } from "../../messenging/useFunction";
+import callRemoteFunction, { FunctionName } from "../../messenging/callRemoteFunction";
 
 interface GetPropertyResult {
-	propertyKey: string;
+	name: string;
 }
 
 enum GetPropertyErrors {
@@ -13,25 +13,9 @@ enum GetPropertyErrors {
 // 10100, UNKNOWN_ERROR, Unknown error fetching property.
 // 10101, PROPERTY_NOT_FOUND, provided propertyKey is not found.
 
-const getProperty = (propertyKey: string): Promise<GetPropertyResult> => 
-  new Promise((resolve, reject) => {
-    useFunction<GetPropertyResult, GetPropertyErrors>(FunctionName.getProperty, 
-    { 
-      propertyKey
-    }, (response) => {
-      if ('error' in response) {
-        const error = new Error(response.message)
-        error.name = response.error
-
-        if('traceId' in response) {
-          error.message =  `${error.message}, traceId: ${response.traceId}`
-        }
-    
-        reject(error)
-      } else {
-        resolve(response.value)
-      }      
-    })
-})
+const getProperty = (name: string): Promise<GetPropertyResult> => 
+  callRemoteFunction<GetPropertyResult, GetPropertyErrors>(FunctionName.getProperty, { 
+    name
+  })
 
 export default getProperty

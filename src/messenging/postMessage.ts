@@ -1,5 +1,5 @@
 import messageApi, { isInAppWebView } from "./messageApi";
-import { FunctionName } from "./useFunction";
+import { FunctionName } from "./callRemoteFunction";
 
 export type RequestId = string
 
