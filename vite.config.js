@@ -1,12 +1,17 @@
 import { defineConfig } from 'vite'
 import WindiCSS from 'vite-plugin-windicss'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+
+import React from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig((env) => ({
-  ...(env.mode === 'development' && {
-    root: 'dev'
-  }),
+  root: env.mode === 'production' || process.env['DEV_APP'] ? 'dev/App': 'dev',
+  server: {
+    host: true,
+    hmr: {
+      clientPort: 443,
+    },
+  },
   plugins: [
     WindiCSS({
       scan: {
@@ -14,7 +19,7 @@ export default defineConfig((env) => ({
         fileExtensions: ['ts', 'tsx'], // also enabled scanning for js/ts
       },
     }),
-    reactRefresh(),
+    React()
   ],
   build: {
     sourcemap: true,

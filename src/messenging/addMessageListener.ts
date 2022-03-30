@@ -3,10 +3,11 @@ import { RequestId } from "./postMessage";
 
 const DEFAULT_TIMEOUT = 10000; // 10 seconds
 
-enum MessageApiErrors {
+export enum MessageApiErrors {
   TIMEOUT_EXCEEDED = 'TIMEOUT_EXCEEDED',
   FUNCTION_NOT_FOUND = 'FUNCTION_NOT_FOUND',
-  NO_VALUE_RETURNED = 'NO_VALUE_RETURNED'
+  NO_VALUE_RETURNED = 'NO_VALUE_RETURNED',
+  UNKNOWN_FUNCTION = 'UNKNOWN_FUNCTION'
 }
 
 export interface MessageErrorResponse<ErrorCodes> {
@@ -27,9 +28,10 @@ export type MessageCallback<Response, ErrorCodes> = (
 
 const addMessageListener = <Response, ErrorCodes>(
   requestId: RequestId, 
-  callback: MessageCallback<Response, ErrorCodes>
+  callback: MessageCallback<Response, ErrorCodes>,
+  timeout = DEFAULT_TIMEOUT
 ) => {
-  let timeout: number // eslint-disable-line prefer-const
+  let timeoutId: number // eslint-disable-line prefer-const
 
   const eventCallback = (event: MessageEvent<string>) => {
     if (event.source == window) {
@@ -41,33 +43,24 @@ const addMessageListener = <Response, ErrorCodes>(
     if (response.requestId !== requestId) {
       return
     }
-      
-    if (!response.value) {
-      callback({
-        requestId,
-        error: MessageApiErrors.NO_VALUE_RETURNED,
-        message: 'No response value returned.'
-      })
-      return
-    }
 
     callback(response)
     
     messageApi.removeEventListener('message', eventCallback);
 
-    if (timeout) {
-      clearTimeout(timeout);
+    if (timeoutId) {
+      clearTimeout(timeoutId);
     }
   }
 
-  timeout = setTimeout(() => {
+  timeoutId = setTimeout(() => {
     callback({
       requestId,
       error: MessageApiErrors.TIMEOUT_EXCEEDED,
       message: 'Timeout exceeded, no response from the App'
     })
     messageApi.removeEventListener('message', eventCallback);
-  }, DEFAULT_TIMEOUT)
+  }, timeout)
 
   messageApi.addEventListener('message', eventCallback)
 };

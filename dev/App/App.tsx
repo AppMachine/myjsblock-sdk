@@ -1,38 +1,27 @@
-import React, { useState } from 'react'
+import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import 'virtual:windi.css'
 
-import { getProperty } from '../../src/functions'
+import FunctionList from './components/FunctionList'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <main className='p-6 h-full'>
       <header>
-        <h1 className='text-xl'>
+        <h1 className='text-xl mb-4'>
           Functions
         </h1>
       </header>
       <section>
-        <button
-          className="border border-red-400 rounded px-4 py-2 mt-4 hover:(bg-teal-400 border-teal-400) bg-red-400"
-          onClick={() => getProperty('caption')}
-        >
-          getProperty
-        </button>
+        <FunctionList />
       </section>
     </main>
   )
 }
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <App/>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('app')
 )
-
-function setCount(arg0: (count: any) => any): void {
-  throw new Error('Function not implemented.')
-}

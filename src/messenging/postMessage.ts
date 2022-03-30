@@ -10,6 +10,9 @@ export interface Message {
 }
 
 const postMessage = (message: Message) => {
+  if (window.debugMyjsblockSdk) {
+    console.debug('POST:', message)
+  }
   const messageStringified = JSON.stringify(message)
   if (isInAppWebView) {
     messageApi.postMessage(messageStringified);

@@ -18,7 +18,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     rules: {
-        "max-len": ["error", { code: 100, "ignoreComments": true }]
+        "max-len": ["error", { code: 110, "ignoreComments": true }]
     },
     "ignorePatterns": ["dist", 'vite.config.js'],
 }

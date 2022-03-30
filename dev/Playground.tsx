@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { JSONTree } from 'react-json-tree';
 
 const theme = {
@@ -26,8 +26,14 @@ const Playground = () => {
   console.log(navigator);
   const [response, setResponse] = useState(undefined)
 
-  const handleMessage = (event) => {
-    setResponse(JSON.parse(event.data))
+  const handleMessage = (event: MessageEvent) => {
+    console.log(event);
+
+    if(typeof event.data === 'string') {
+      const response = JSON.parse(event.data)
+
+      setResponse(response)
+    }
   }
 
   useEffect(()=>{

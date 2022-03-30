@@ -1,11 +1,13 @@
-// import { FunctionName, onMessage, postMessage } from "../utils/messenger";
-// import rejectOnError from "../utils/rejectOnError";
-// import uid from "../utils/uid";
+import { callRemoteFunction } from "../../messenging";
+import { FunctionName } from "../../messenging/callRemoteFunction";
+interface GetCurrentRecordResult <DataResponse> {
+  item: DataResponse
+  error?: MyJsBlockSDKError
+}
 
-// interface GetCurrentRecordResult <DataResponse> {
-//   item: DataResponse
-//   error?: MyJsBlockSDKError
-// }
+enum GetCurrentRecordErrors {
+  
+}
 
 // const getCurrentRecord = <DataResponse = unknown>() => new Promise((resolve, reject) => {
 //   const requestId = uid()
@@ -27,3 +29,10 @@
 // })
 
 // export default getCurrentRecord
+
+const getCurrentRecord = <DataResponse = unknown>(): Promise<GetCurrentRecordResult<DataResponse>> => 
+  callRemoteFunction<GetCurrentRecordResult<DataResponse>, GetCurrentRecordErrors>(
+    FunctionName.getCurrentRecord,
+  )
+
+export default getCurrentRecord

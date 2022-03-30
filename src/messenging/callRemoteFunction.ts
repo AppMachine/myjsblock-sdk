@@ -1,32 +1,41 @@
 import uid from '../utils/uid'
-import addMessageListener from './addMessageListener'
+import addMessageListener, { MessageApiErrors } from './addMessageListener'
 import postMessage, { Message } from './postMessage'
 
 export enum FunctionName {
-  getRecords = 'getRecords',
+  getProperty = 'getProperty',
   showAlertMessage = 'showAlertMessage',
-  setCurrentRecord = 'setCurrentRecord',
   getCurrentRecord = 'getCurrentRecord',
-  getProperty = 'getProperty'
+  // getRecords = 'getRecords',
+  // setCurrentRecord = 'setCurrentRecord',
 }
 
 const callRemoteFunction = <Response, FunctionErrorCodes>(
     functionName: FunctionName,
-    args: Message['arguments'],
+    args?: Message['arguments'],
   ): Promise<Response>  => new Promise((resolve, reject) => {
     const requestId = uid()
   
     addMessageListener<Response, FunctionErrorCodes>(requestId, (response) => {
-      if ('error' in response) {
+      if(window.debugMyjsblockSdk) {
+        console.debug('Received:', response)
+      }
+      if ('error' in response) { 
         const error = new Error(response.message)
-        error.name = String(response.error)
+        error.name = String(response.error).toUpperCase()
 
         if('traceId' in response) {
           error.message =  `${error.message}, traceId: ${response.traceId}`
         }
     
         reject(error)
+      } else if (!response.value) {
+        const error = new Error('No response value returned.')
+        error.name = MessageApiErrors.NO_VALUE_RETURNED,
+        reject(error)
+        
       } else {
+        
         resolve(response.value)
       }    
     })
