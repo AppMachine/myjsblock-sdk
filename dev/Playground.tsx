@@ -60,7 +60,7 @@ const Playground = () => {
         </header>
         <JSONTree 
           theme={theme}
-          data={response}
+          data={'true'}
         />
       </section>
       </div>

@@ -1,49 +1,23 @@
-// import { PaginationOptions, PaginationType } from '../types/pagination';
-// import { onMessage, postMessage, FunctionName } from '../utils/messenger';
+import { callRemoteFunction } from "../../messenging"
+import { FunctionName } from "../../messenging/callRemoteFunction"
 
-// interface DataSourceOption {
-//   dataTableId?: string
-//   webServiceId?: string
-// }
+interface GetRecordsResult <DataResponse> {
+  data: DataResponse[]
+}
 
-// interface GetRecordsResult <DataResponse> {
-//   paginationType: PaginationType,
-//   paginationOptions: PaginationOptions
-//   data: DataResponse[]
-// }
+enum GetRecordsErrors {
+  UNKNOWN_ERROR = 'UNKNOWN_ERROR',
+  ERROR_FETCH_WEBSERVICE = 'ERROR_FETCH_WEBSERVICE'
+}
 
-// // Errors that can be thrown: <code, string>
-// // UNKWOWN_TABLE_ERROR, 10100, Unknown data table error. (douche putje)
-// // ERROR_FETCH_WEBSERVICE, 10101, Error fetching data from webservice.
-// // DATA_DABLE_ID_NOT_FOUND, 10102, provided DataTableId is not found.
-// // WEB_SERVICE_ID_NOT_FOUND, 10103, provided WebServiceID is not found.
-// // PAGINATION_TYPE_NOT_SUPPORTED, 10104, Requested pagination type is not supported on this data type.
+/**
+ * Returns the records form the data web service context.
+ * @returns {Array} of items from a web-service.
+ * @throws {Error} if fetching the web-service fails
+ */
+const getRecords = <DataResponse = unknown[]>(): Promise<GetRecordsResult<DataResponse>> =>
+  callRemoteFunction<GetRecordsResult<DataResponse>, GetRecordsErrors>(
+    FunctionName.getRecords,
+  )
 
-// const getRecords = <DataResponse>(
-//   dataSource: DataSourceOption,
-//   paginationOptions?: PaginationOptions,
-// ): Promise<GetRecordsResult<DataResponse>> => new Promise((resolve, reject) => {
-//   const requestId = uid()
-//     onMessage(FunctionName.getRecords, (event) => {
-//       // if (event.data.error) {
-//       //   const {code, message} = event.data.error
-//       //   const error = new Error(message)
-//       //   error.name = code
-
-//       //   reject(error)
-//       // }
-
-//       resolve(event.data);
-//     });
-
-//     postMessage({
-//       functionName: FunctionName.getRecords,
-//       arguments: {
-//         ...dataSource,
-//         ...(paginationOptions ? { paginationOptions }: {})
-//       }
-//     })
-//   });
-
-
-// export default getRecords
+export default getRecords

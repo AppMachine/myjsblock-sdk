@@ -1,8 +1,11 @@
 import {FunctionName} from '../../src/messenging/callRemoteFunction'
 import { 
   getProperty,
-  showAlertMessage,
-  getCurrentRecord
+  showAlert,
+  getCurrentRecord,
+  getRecords,
+  showLoader,
+  hideLoader
 } from '../../src/sdk'
 
 export interface Argument {
@@ -12,7 +15,9 @@ export interface Argument {
 export interface FunctionOption {
   args: Argument[],
   jsonInput?: boolean
-  callFunction: (...args: any[]) => Promise<unknown> // eslint-disable-line @typescript-eslint/no-explicit-any
+  description?: string
+  callFunction: (...args: any[]) => Promise<unknown> // eslint-disable-line @typescript-eslint/no-explicit-any,
+  hide?: boolean
 }
 
 const functions: Record<FunctionName, FunctionOption> = {
@@ -21,10 +26,9 @@ const functions: Record<FunctionName, FunctionOption> = {
       name: 'propertyName',
       value: 'caption',
     }],
-    jsonInput: false,
     callFunction: getProperty
   },
-  [FunctionName.showAlertMessage]: {
+  [FunctionName.showAlert]: {
     args: [{
       name: 'title',
       value: 'This is an alert!',
@@ -33,14 +37,32 @@ const functions: Record<FunctionName, FunctionOption> = {
       name: 'message',
       value: 'hello world',
     }],
-    jsonInput: false,
-    callFunction: showAlertMessage
+    callFunction: showAlert
   },
   [FunctionName.getCurrentRecord]: {
     args: [],
-    jsonInput: false,
     callFunction: getCurrentRecord
   },
+  [FunctionName.getRecords]: {
+    args: [],
+    callFunction: getRecords
+  },
+  [FunctionName.showLoader]: {
+    args: [],
+    description: 'Shows native loader, will call hideLoader after 2 seconds.',
+    callFunction: async () => {
+      await showLoader()
+      
+      setTimeout(() => {
+        hideLoader()
+      }, 2000)
+    }
+  },
+  [FunctionName.hideLoader]: {
+    hide: true,
+    args: [],
+    callFunction: async () => {},
+  }
 }
 
 export default functions

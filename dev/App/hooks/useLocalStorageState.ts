@@ -1,25 +1,35 @@
 import { useCallback, useState } from "react"
 
-const useLocalStorageState = (initialValue: any, localStorageKey: string) => {
+const useLocalStorageState = (initialValue: any, localStorageKey: string, toggle = false) => {
   const [state, setState] = useState(() => {
-    const localStorageValue = localStorage.getItem(localStorageKey)
+    let localStorageValue = localStorage.getItem(localStorageKey)
 
     if (localStorageValue == null || localStorageValue?.length === 0) {
       return initialValue
     }
 
-    if (localStorageValue?.startsWith('{')) {
-      return JSON.parse(localStorageValue)
-    } else {
+    try {
+      const parsedValue = JSON.parse(localStorageValue)
+      return parsedValue
+    } catch (e) {
       return localStorageValue
     }
-    
   })
 
   const updateState = useCallback((newState) => {
-    localStorage.setItem(localStorageKey, newState)
-    setState(newState)
-  }, [])
+    if (toggle) {
+      setState((oldState: boolean)=> {
+        const newValue:boolean = !oldState
+
+        localStorage.setItem(localStorageKey, String(newValue))
+
+        return newValue
+      })
+    } else {
+      localStorage.setItem(localStorageKey, String(newState))
+      setState(newState)
+    }    
+  }, [toggle])
 
   return [state, updateState]
 }

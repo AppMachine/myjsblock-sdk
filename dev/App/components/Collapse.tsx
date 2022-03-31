@@ -8,14 +8,14 @@ interface CollapseProps {
 }
 
 const Collapse = ({ name, children }: CollapseProps) => {
-  const [open, setOpen] = useLocalStorageState(false, `collapsed-${name}`)
+  const [open, toggle] = useLocalStorageState(false, `collapsed-${name}`, true)
   return (
     <div className={`text p-3 rounded-lg ${
       open ? 'bg-cool-gray-300' : 'bg-cool-gray-400'
     }`}>
       <header className="select-none cursor-pointer inline-flex  before::self-center before:(self-center
  border-t-0 border-r-2 border-b-2 border-l-0 border-solid inline-block p-1)"
-        onClick={() => setOpen((value: boolean) => !value)}>
+        onClick={() => toggle()}>
         <h2 className="text-lg font-mono">{name}</h2>
       </header>
       {open && (

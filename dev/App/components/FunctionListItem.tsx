@@ -7,7 +7,7 @@ interface FunctionListitemProps extends FunctionOption {
   name: string
 }
 
-const FunctionListitem = ({ name, args, callFunction }: FunctionListitemProps) => {
+const FunctionListitem = ({ name, args, callFunction, description, hide }: FunctionListitemProps) => {
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault()
     const inputValues = 
@@ -36,12 +36,23 @@ const FunctionListitem = ({ name, args, callFunction }: FunctionListitemProps) =
       })
     }
   }
+
+  if (hide) {
+    return null
+  }
+
   return (
     <li className="mb-4">
       <Collapse name={name}>
         <form onSubmit={onSubmit}>
+          { Boolean(description?.length) && (
+            <p>
+              {description}
+            </p>
+          ) }
           { args.map(({ value, name: argName }) => (
             <fieldset key={argName} className="mb-2">
+              
               <label htmlFor={`${name}-${argName}`} className="block mb-2 font-bold text-gray-700">
                 {argName}
               </label>

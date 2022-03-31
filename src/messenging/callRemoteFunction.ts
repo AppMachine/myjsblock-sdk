@@ -4,9 +4,11 @@ import postMessage, { Message } from './postMessage'
 
 export enum FunctionName {
   getProperty = 'getProperty',
-  showAlertMessage = 'showAlertMessage',
+  showAlert = 'showAlert',
   getCurrentRecord = 'getCurrentRecord',
-  // getRecords = 'getRecords',
+  getRecords = 'getRecords',
+  showLoader = 'showLoader',
+  hideLoader = 'hideLoader'
   // setCurrentRecord = 'setCurrentRecord',
 }
 
