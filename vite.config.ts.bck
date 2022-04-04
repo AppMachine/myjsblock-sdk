@@ -1,0 +1,42 @@
+import path from "path";
+import { defineConfig } from "vite";
+
+import license from 'rollup-plugin-license';
+import dts from "rollup-plugin-dts";
+
+import pkg from './package.json';
+
+export default defineConfig({
+  build: {
+    lib: {
+      entry: path.resolve(process.cwd(), 'src/sdk.ts'),
+      name: 'MyLib',
+      formats: ['umd', 'cjs', 'es', 'esm'],
+      fileName: (format) => `${format}/myjsblock-sdk.js`
+    },
+    rollupOptions: {
+    //   // make sure to externalize deps that shouldn't be bundled
+    //   // into your library
+    //   external: ['vue'],
+      // output: {
+      //   preserveModules
+    //     // Provide global variables to use in the UMD build
+    //     // for externalized deps
+    //     globals: {
+    //       vue: 'Vue'
+    //     }
+    //   }
+      plugins: [
+        license({
+          banner: `${pkg.name} v${pkg.version} - ${pkg.license}`,
+        }),
+      ]
+    }
+  },
+  plugins: [
+    license({
+      banner: `${pkg.name} v${pkg.version} - ${pkg.license}`,
+    }),
+    // dts()
+  ]
+})

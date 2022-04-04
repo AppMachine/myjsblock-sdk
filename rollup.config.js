@@ -51,8 +51,9 @@ const configs = bundles
       plugins: [
         typescript(preserveModules && {
           compilerOptions: {
-            outDir: `${outputDir}/${format}`
-          }
+            outDir: `${outputDir}/${format}`,
+            rootDir: 'src'
+          },
         }),
         // resolve(),
         commonJS({
@@ -94,7 +95,9 @@ const typesFileConfig = {
     file: `${outputDir}/${outputFileName}.d.ts`,
     format: "es"
   }],
-  plugins: [dts()],
+  plugins: [dts({
+    include: ["src"],
+  })],
 };
 
 export default [...configs, typesFileConfig];

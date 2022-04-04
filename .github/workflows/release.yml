@@ -1,0 +1,40 @@
+name: Release Package
+
+on:
+  push:
+    tags:
+      - "v*"
+
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.4.0
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set Config
+        run: npm config set access public
+
+      - name: Set Auth Token
+        run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+
+      # - name: Create Env file
+      #   run: cp .env.example .env
+
+      - name: Build
+        run: npm run build
+
+      # - name: Test
+      #   run: npm run test --silent
+
+      - name: Publish
+        run: npm publish
