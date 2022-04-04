@@ -5,7 +5,6 @@ enum ShowLoaderErrors {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
 }
 
-
 /**
  * @public
  * Allows you to show the native loader overlay

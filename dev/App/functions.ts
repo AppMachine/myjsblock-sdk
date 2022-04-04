@@ -1,3 +1,4 @@
+import setCurrentRecordById from '../../src/functions/data/setCurrentRecordById'
 import {FunctionName} from '../../src/messenging/callRemoteFunction'
 import { 
   getProperty,
@@ -47,6 +48,13 @@ const functions: Record<FunctionName, FunctionOption> = {
     args: [],
     callFunction: getRecords
   },
+  [FunctionName.setCurrentRecordById]: {
+    args: [{
+      name: 'recordId',
+      value: '',
+    }],
+    callFunction: setCurrentRecordById
+  },
   [FunctionName.showLoader]: {
     args: [],
     description: 'Shows native loader, will call hideLoader after 2 seconds.',
@@ -61,6 +69,19 @@ const functions: Record<FunctionName, FunctionOption> = {
   [FunctionName.hideLoader]: {
     hide: true,
     args: [],
+    callFunction: async () => {},
+  },
+  [FunctionName.goBack]: {
+    hide: true,
+    args: [],
+    callFunction: async () => {},
+  },
+  [FunctionName.getImageUrl]: {
+    hide: true,
+    args: [{
+      name: 'imageId',
+      value: '',
+    }],
     callFunction: async () => {},
   }
 }

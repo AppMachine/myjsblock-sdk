@@ -3,13 +3,21 @@ import addMessageListener, { MessageApiErrors } from './addMessageListener'
 import postMessage, { Message } from './postMessage'
 
 export enum FunctionName {
+  /* Core */
   getProperty = 'getProperty',
-  showAlert = 'showAlert',
-  getCurrentRecord = 'getCurrentRecord',
-  getRecords = 'getRecords',
   showLoader = 'showLoader',
-  hideLoader = 'hideLoader'
+  getImageUrl = 'getImageUrl',
+  hideLoader = 'hideLoader',
+
+  /* Data */
+  getRecords = 'getRecords',
+  getCurrentRecord = 'getCurrentRecord',
+  setCurrentRecordById = 'setCurrentRecordById',
   // setCurrentRecord = 'setCurrentRecord',
+
+  /* Notification */
+  showAlert = 'showAlert',
+  goBack = 'goBack'
 }
 
 const callRemoteFunction = <Response, FunctionErrorCodes>(
@@ -19,9 +27,9 @@ const callRemoteFunction = <Response, FunctionErrorCodes>(
     const requestId = uid()
   
     addMessageListener<Response, FunctionErrorCodes>(requestId, (response) => {
-      if(window.debugMyjsblockSdk) {
+      // if(window.debugMyjsblockSdk) {
         console.debug('Received:', response)
-      }
+      // }
       if ('error' in response) { 
         const error = new Error(response.message)
         error.name = String(response.error).toUpperCase()

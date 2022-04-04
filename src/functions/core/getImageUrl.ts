@@ -1,11 +1,22 @@
+import { callRemoteFunction } from "../../messenging";
+import { FunctionName } from "../../messenging/callRemoteFunction";
+
+type GetImageUrlResult = string
+
+enum GetImageUrlErrors {
+  NO_IMAGE_ID_PROVIDED = 'NO_IMAGE_ID_PROVIDED'
+}
+
 /**
- * @public
  * Allows you to get an image url based on an image id
- * @param {string} imageid
- * @returns {PromiseLike<string>}
+ * @public
+ * @param {string} imageId
+ * @returns {Promise<string>} Promise with url of an image
  * @throws  {Error} If no valid imageId has been specified.
  */
- export function getImageUrl(imageid: string): Promise<string> {
-  throw Error('To Be Implemented');
-  console.log(imageid);
-}
+const getImageUrl = (imageId: string): Promise<GetImageUrlResult> => 
+  callRemoteFunction<GetImageUrlResult, GetImageUrlErrors>(FunctionName.getImageUrl, {
+    imageId
+  })
+
+export default getImageUrl

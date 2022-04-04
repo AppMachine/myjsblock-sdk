@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import functions, { FunctionOption } from '../functions'
+import functions from '../functions'
 import FunctionListitem from './FunctionListItem'
 
 const FunctionList = () => {

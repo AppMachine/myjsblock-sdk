@@ -16,7 +16,7 @@ enum GetPropertyErrors {
  * @name getProperty
  * @description Gets the given propertyName from the current block.
  * @param {string} name
- * @returns {string} Promise<GetPropertyResult>
+ * @returns {Promise<string>} The value of the property
  * @public
  * 
  * ```js

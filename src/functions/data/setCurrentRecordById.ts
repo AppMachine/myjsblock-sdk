@@ -1,11 +1,24 @@
-// import callRemoteFunction, { FunctionName } from "../../messenging/callRemoteFunction"
+import callRemoteFunction, { FunctionName } from "../../messenging/callRemoteFunction"
 
-// interface SetCurrentRecordByIdResult {
+interface SetCurrentRecordByIdResult {
+  
+}
 
-// }
+enum SetCurrentRecordByIdErrors {
 
-// const setCurrentRecordById = (recordId: string): Promise<SetCurrentRecordByIdResult> => 
-//   callRemoteFunction<SetCurrentRecordByIdResult, GetCurrentRecordErrors>(
-//     FunctionName.getCurrentRecord,
-//   )
-// export default setCurrentRecordById
+}
+/**
+ * Set current record by record id.
+ * @public
+ * @param {string} recordId 
+ * @returns {Promise<unknown>}
+ */
+const setCurrentRecordById = (recordId: string): Promise<SetCurrentRecordByIdResult> => 
+  callRemoteFunction<SetCurrentRecordByIdResult, SetCurrentRecordByIdErrors>(
+    FunctionName.setCurrentRecordById, 
+    {
+      recordId
+    }
+  )
+
+export default setCurrentRecordById
