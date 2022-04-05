@@ -7,10 +7,9 @@ import { callRemoteFunction } from "../../messenging"
  }
  
  /**
-  * 
   * Allows you to hide the native loader overlay
   * @public
-  * @returns {Promise<void>}
+  * @returns {Promise<void>} Promise
   */
  const hideLoader = (): Promise<void> => 
    callRemoteFunction<void, HideLoaderErrors>(FunctionName.hideLoader)

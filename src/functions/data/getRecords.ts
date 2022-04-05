@@ -12,9 +12,11 @@ enum GetRecordsErrors {
 }
 
 /**
- * Returns the records form the data web service context.
- * @returns {Array} of items from a web-service.
+ * Returns the records form the data context
+ * @returns {Array} Promise of items from the data context
+ * @throws {Error} if unknown error occurs
  * @throws {Error} if fetching the web-service fails
+ * @throws {Error} if function is not called in a data context
  */
 const getRecords = <DataResponse = unknown[]>(): Promise<GetRecordsResult<DataResponse>> =>
   callRemoteFunction<GetRecordsResult<DataResponse>, GetRecordsErrors>(

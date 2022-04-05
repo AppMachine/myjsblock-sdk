@@ -6,8 +6,8 @@ enum ShowLoaderErrors {
 }
 
 /**
- * @public
  * Allows you to show the native loader overlay
+ * @public
  * @returns {Promise<void>}
  */
 const showLoader = (): Promise<void> => 

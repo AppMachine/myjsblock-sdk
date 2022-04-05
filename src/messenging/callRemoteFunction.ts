@@ -24,7 +24,7 @@ export enum FunctionName {
 const callRemoteFunction = <Response, FunctionErrorCodes>(
     functionName: FunctionName,
     args?: Message['arguments'],
-  ): Promise<Response>  => new Promise((resolve, reject) => {
+  ): Promise<Response> => new Promise((resolve, reject) => {
     const requestId = uid()
   
     addMessageListener<Response, FunctionErrorCodes>(requestId, (response) => {
@@ -35,7 +35,7 @@ const callRemoteFunction = <Response, FunctionErrorCodes>(
         const error = new Error(response.message)
         error.name = String(response.error).toUpperCase()
 
-        if('traceId' in response) {
+        if ('traceId' in response) {
           error.message =  `${error.message}, traceId: ${response.traceId}`
         }
     

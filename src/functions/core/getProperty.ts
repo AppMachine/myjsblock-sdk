@@ -13,11 +13,12 @@ enum GetPropertyErrors {
 // 10101, PROPERTY_NOT_FOUND, provided propertyKey is not found.
 
 /**
- * @name getProperty
- * @description Gets the given propertyName from the current block.
+ * Gets the given propertyName from the current block.
+ * @public
  * @param {string} name
  * @returns {Promise<string>} The value of the property
- * @public
+ * @throws {Error} If unknown error occurs
+ * @throws {Error} If given `name` parameter is not found 
  * 
  * ```js
  * import { getProperty } from '@myjsblock/sdk'
