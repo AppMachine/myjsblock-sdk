@@ -5,7 +5,8 @@ type GetCurrentRecordResult <DataResponse> = DataResponse
 
 enum GetCurrentRecordErrors {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
-  FETCH_DATA_ERROR = 'FETCH_DATA_ERROR'
+  FETCH_DATA_ERROR = 'FETCH_DATA_ERROR',
+  MISSING_CONTEXT = 'MISSING_CONTEXT'
 }
 
 /**

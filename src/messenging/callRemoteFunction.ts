@@ -5,8 +5,8 @@ import postMessage, { Message } from './postMessage'
 export enum FunctionName {
   /* Core */
   getProperty = 'getProperty',
-  showLoader = 'showLoader',
   getImageUrl = 'getImageUrl',
+  showLoader = 'showLoader',
   hideLoader = 'hideLoader',
 
   /* Data */
@@ -17,7 +17,8 @@ export enum FunctionName {
 
   /* Notification */
   showAlert = 'showAlert',
-  goBack = 'goBack'
+  goBack = 'goBack',
+  goToBlock = 'goToBlock'
 }
 
 const callRemoteFunction = <Response, FunctionErrorCodes>(

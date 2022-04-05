@@ -76,6 +76,14 @@ const functions: Record<FunctionName, FunctionOption> = {
     args: [],
     callFunction: async () => {},
   },
+  [FunctionName.goToBlock]: {
+    hide: true,
+    args: [{
+      name: 'recordId',
+      value: '',
+    }],
+    callFunction: async () => {},
+  },
   [FunctionName.getImageUrl]: {
     hide: true,
     args: [{

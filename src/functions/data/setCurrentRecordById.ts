@@ -1,8 +1,6 @@
 import callRemoteFunction, { FunctionName } from "../../messenging/callRemoteFunction"
 
-interface SetCurrentRecordByIdResult {
-  
-}
+type SetCurrentRecordByIdResult = void
 
 enum SetCurrentRecordByIdErrors {
 

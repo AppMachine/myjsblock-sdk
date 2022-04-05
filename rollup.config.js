@@ -62,7 +62,7 @@ const configs = bundles
         babel({
           babelHelpers: 'bundled',
         }),
-        // The two minifiers together seem to procude a smaller bundle 🤷‍♂️
+        // The two minifiers together seem to produce a smaller bundle 🤷‍♂️
         minify && compiler(),
         minify && terser(),
         license({
