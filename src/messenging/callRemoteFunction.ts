@@ -1,28 +1,10 @@
 import uid from '../utils/uid'
 import addMessageListener, { MessageApiErrors } from './addMessageListener'
 import postMessage, { Message } from './postMessage'
-
-export enum FunctionName {
-  /* Core */
-  getProperty = 'getProperty',
-  getImageUrl = 'getImageUrl',
-  showLoader = 'showLoader',
-  hideLoader = 'hideLoader',
-
-  /* Data */
-  getRecords = 'getRecords',
-  getCurrentRecord = 'getCurrentRecord',
-  setCurrentRecordById = 'setCurrentRecordById',
-  // setCurrentRecord = 'setCurrentRecord',
-
-  /* Notification */
-  showAlert = 'showAlert',
-  goBack = 'goBack',
-  goToBlock = 'goToBlock'
-}
+import { Function } from "../types/function";
 
 const callRemoteFunction = <Response, FunctionErrorCodes>(
-    functionName: FunctionName,
+    functionName: Function,
     args?: Message['arguments'],
   ): Promise<Response> => new Promise((resolve, reject) => {
     const requestId = uid()

@@ -1,5 +1,5 @@
 import { callRemoteFunction } from "../../messenging";
-import { FunctionName } from "../../messenging/callRemoteFunction";
+import { Function } from "../../types/function";
 
 enum GoBackErrors {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
@@ -12,6 +12,6 @@ enum GoBackErrors {
  * @returns {Promise<void>}
  */
 const goBack = (): Promise<void> => 
-  callRemoteFunction<void, GoBackErrors>(FunctionName.goBack)
+  callRemoteFunction<void, GoBackErrors>(Function.goBack)
 
 export default goBack

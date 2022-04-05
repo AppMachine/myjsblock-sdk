@@ -25,4 +25,10 @@ export default defineConfig((env) => ({
   build: {
     sourcemap: true,
   },
+  test: {
+    // setupFiles: 'test/stubs',
+    globals: {
+      window: {}
+    },
+  }
 }))

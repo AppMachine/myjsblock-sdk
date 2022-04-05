@@ -1,5 +1,5 @@
 import { callRemoteFunction } from "../../messenging"
-import { FunctionName } from "../../messenging/callRemoteFunction"
+import { Function } from "../../types/function";
 
 enum ShowLoaderErrors {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
@@ -11,6 +11,6 @@ enum ShowLoaderErrors {
  * @returns {Promise<void>}
  */
 const showLoader = (): Promise<void> => 
-  callRemoteFunction<void, ShowLoaderErrors>(FunctionName.showLoader)
+  callRemoteFunction<void, ShowLoaderErrors>(Function.showLoader)
 
 export default showLoader

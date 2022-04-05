@@ -10,7 +10,7 @@
     "typeRoots": ["./src/types", "./node_modules/@types"],
     "outDir": "dist",
     "target": "ESNext",
-    "types": ["vite/client"],
+    "types": ["vite/client", "jest"],
     "useDefineForClassFields": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

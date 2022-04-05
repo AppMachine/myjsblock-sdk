@@ -1,4 +1,5 @@
-import callRemoteFunction, { FunctionName } from "../../messenging/callRemoteFunction";
+import callRemoteFunction from "../../messenging/callRemoteFunction";
+import { Function } from "../../types/function";
 
 type GetPropertyResult = string
 
@@ -32,7 +33,7 @@ enum GetPropertyErrors {
  * ```
  */
 const getProperty = (name: string): Promise<GetPropertyResult> => 
-  callRemoteFunction<GetPropertyResult, GetPropertyErrors>(FunctionName.getProperty, { 
+  callRemoteFunction<GetPropertyResult, GetPropertyErrors>(Function.getProperty, { 
     name
   })
 

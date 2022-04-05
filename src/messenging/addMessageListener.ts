@@ -59,7 +59,7 @@ const addMessageListener = <Response, ErrorCodes>(
       message: 'Timeout exceeded, no response from the App'
     })
     messageApi.removeEventListener('message', eventCallback);
-  }, timeout)
+  }, timeout) as unknown as number
 
   messageApi.addEventListener('message', eventCallback)
 };

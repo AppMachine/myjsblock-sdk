@@ -1,5 +1,6 @@
 import setCurrentRecordById from '../../src/functions/data/setCurrentRecordById'
-import {FunctionName} from '../../src/messenging/callRemoteFunction'
+import { Function } from '../../src/types/function'
+
 import { 
   getProperty,
   showAlert,
@@ -13,6 +14,7 @@ export interface Argument {
   name: string,
   value: unknown
 }
+
 export interface FunctionOption {
   args: Argument[],
   jsonInput?: boolean
@@ -21,15 +23,15 @@ export interface FunctionOption {
   hide?: boolean
 }
 
-const functions: Record<FunctionName, FunctionOption> = {
-  [FunctionName.getProperty]: {
+const functions: Record<Function, FunctionOption> = {
+  [Function.getProperty]: {
     args: [{
       name: 'propertyName',
       value: 'caption',
     }],
     callFunction: getProperty
   },
-  [FunctionName.showAlert]: {
+  [Function.showAlert]: {
     args: [{
       name: 'title',
       value: 'This is an alert!',
@@ -40,43 +42,42 @@ const functions: Record<FunctionName, FunctionOption> = {
     }],
     callFunction: showAlert
   },
-  [FunctionName.getCurrentRecord]: {
+  [Function.getCurrentRecord]: {
     args: [],
     callFunction: getCurrentRecord
   },
-  [FunctionName.getRecords]: {
+  [Function.getRecords]: {
     args: [],
     callFunction: getRecords
   },
-  [FunctionName.setCurrentRecordById]: {
+  [Function.setCurrentRecordById]: {
     args: [{
       name: 'recordId',
       value: '',
     }],
     callFunction: setCurrentRecordById
   },
-  [FunctionName.showLoader]: {
+  [Function.showLoader]: {
     args: [],
     description: 'Shows native loader, will call hideLoader after 2 seconds.',
     callFunction: async () => {
       await showLoader()
       
-      setTimeout(() => {
-        hideLoader()
-      }, 2000)
+      await new Promise((resolve) =>  setTimeout(resolve, 2000))
+      await hideLoader()
     }
   },
-  [FunctionName.hideLoader]: {
+  [Function.hideLoader]: {
     hide: true,
     args: [],
     callFunction: async () => {},
   },
-  [FunctionName.goBack]: {
+  [Function.goBack]: {
     hide: true,
     args: [],
     callFunction: async () => {},
   },
-  [FunctionName.goToBlock]: {
+  [Function.goToBlock]: {
     hide: true,
     args: [{
       name: 'recordId',
@@ -84,13 +85,14 @@ const functions: Record<FunctionName, FunctionOption> = {
     }],
     callFunction: async () => {},
   },
-  [FunctionName.getImageUrl]: {
-    hide: true,
+  [Function.getImageUrl]: {
     args: [{
       name: 'imageId',
       value: '',
     }],
-    callFunction: async () => {},
+    callFunction: async () => {
+      throw new Error('hoi obe')
+    },
   }
 }
 

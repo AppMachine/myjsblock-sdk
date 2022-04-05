@@ -1,4 +1,5 @@
-import callRemoteFunction, { FunctionName } from "../../messenging/callRemoteFunction"
+import callRemoteFunction from "../../messenging/callRemoteFunction"
+import { Function } from "../../types/function";
 
 type SetCurrentRecordByIdResult = void
 
@@ -13,7 +14,7 @@ enum SetCurrentRecordByIdErrors {
  */
 const setCurrentRecordById = (recordId: string): Promise<SetCurrentRecordByIdResult> => 
   callRemoteFunction<SetCurrentRecordByIdResult, SetCurrentRecordByIdErrors>(
-    FunctionName.setCurrentRecordById, 
+    Function.setCurrentRecordById, 
     {
       recordId
     }

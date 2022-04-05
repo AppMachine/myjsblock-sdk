@@ -1,4 +1,5 @@
-import callRemoteFunction, { FunctionName } from "../../messenging/callRemoteFunction";
+import callRemoteFunction from "../../messenging/callRemoteFunction";
+import { Function } from "../../types/function";
 
 interface GetBlockNameResult {
 	name: string;
@@ -32,7 +33,7 @@ enum GetBlockNameErrors {
  * ```
  */
 const getBlockName = (): Promise<GetBlockNameResult> => 
-  callRemoteFunction<GetBlockNameResult, GetBlockNameErrors>(FunctionName.getProperty, { 
+  callRemoteFunction<GetBlockNameResult, GetBlockNameErrors>(Function.getProperty, { 
     name: 'caption'
   })
 

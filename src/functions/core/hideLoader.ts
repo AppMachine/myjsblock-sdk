@@ -1,6 +1,6 @@
 
 import { callRemoteFunction } from "../../messenging"
- import { FunctionName } from "../../messenging/callRemoteFunction"
+import { Function } from "../../types/function";
  
  enum HideLoaderErrors {
    UNKNOWN_ERROR = 'UNKNOWN_ERROR',
@@ -12,6 +12,6 @@ import { callRemoteFunction } from "../../messenging"
   * @returns {Promise<void>} Promise
   */
  const hideLoader = (): Promise<void> => 
-   callRemoteFunction<void, HideLoaderErrors>(FunctionName.hideLoader)
+   callRemoteFunction<void, HideLoaderErrors>(Function.hideLoader)
  
  export default hideLoader

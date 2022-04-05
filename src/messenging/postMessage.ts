@@ -1,19 +1,19 @@
 import messageApi, { isInAppWebView } from "./messageApi";
-import { FunctionName } from "./callRemoteFunction";
+import { Function } from "../types/function";
 
 export type RequestId = string
 
 export interface Message {
   id: RequestId
-  functionName: FunctionName
+  functionName: Function
   arguments?: object
 }
 
 const postMessage = (message: Message) => {
-  if (window.debugMyjsblockSdk) {
+  // if (window.debugMyjsblockSdk) {
     console.debug('POST:', message)
-  }
-  
+  // }
+
   const messageStringified = JSON.stringify(message)
   
   if (isInAppWebView) {

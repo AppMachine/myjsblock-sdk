@@ -1,5 +1,5 @@
 import { callRemoteFunction } from "../../messenging";
-import { FunctionName } from "../../messenging/callRemoteFunction";
+import { Function } from "../../types/function";
 
 type GetCurrentRecordResult <DataResponse> = DataResponse
 
@@ -19,7 +19,7 @@ enum GetCurrentRecordErrors {
  */
 const getCurrentRecord = <DataResponse = unknown>(): Promise<GetCurrentRecordResult<DataResponse>> => 
   callRemoteFunction<GetCurrentRecordResult<DataResponse>, GetCurrentRecordErrors>(
-    FunctionName.getCurrentRecord,
+    Function.getCurrentRecord,
   )
 
 export default getCurrentRecord

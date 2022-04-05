@@ -1,4 +1,5 @@
-import callRemoteFunction, { FunctionName } from "../../messenging/callRemoteFunction";
+import callRemoteFunction from "../../messenging/callRemoteFunction";
+import { Function } from "../../types/function";
 
 interface ShowAlertResult {
   clicked: string[]
@@ -23,7 +24,7 @@ enum ShowAlertErrors {
 const showAlert = (
   title: string, message = '', buttons: string[] = ['ok']
 ): Promise<ShowAlertResult> => 
-  callRemoteFunction<ShowAlertResult, ShowAlertErrors>(FunctionName.showAlert, { 
+  callRemoteFunction<ShowAlertResult, ShowAlertErrors>(Function.showAlert, { 
     title,
     message,
     buttons

@@ -1,5 +1,5 @@
 import { callRemoteFunction } from "../../messenging";
-import { FunctionName } from "../../messenging/callRemoteFunction";
+import { Function } from "../../types/function";
 
 type GetImageUrlResult = string
 
@@ -15,7 +15,7 @@ enum GetImageUrlErrors {
  * @throws  {Error} If no valid imageId has been specified.
  */
 const getImageUrl = (imageId: string): Promise<GetImageUrlResult> => 
-  callRemoteFunction<GetImageUrlResult, GetImageUrlErrors>(FunctionName.getImageUrl, {
+  callRemoteFunction<GetImageUrlResult, GetImageUrlErrors>(Function.getImageUrl, {
     imageId
   })
 

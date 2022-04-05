@@ -1,5 +1,5 @@
 import { callRemoteFunction } from "../../messenging"
-import { FunctionName } from "../../messenging/callRemoteFunction"
+import { Function } from "../../types/function";
 
 interface GetRecordsResult <DataResponse> {
   data: DataResponse[]
@@ -20,7 +20,7 @@ enum GetRecordsErrors {
  */
 const getRecords = <DataResponse = unknown[]>(): Promise<GetRecordsResult<DataResponse>> =>
   callRemoteFunction<GetRecordsResult<DataResponse>, GetRecordsErrors>(
-    FunctionName.getRecords,
+    Function.getRecords,
   )
 
 export default getRecords

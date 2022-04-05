@@ -1,5 +1,5 @@
 import { callRemoteFunction } from "../../messenging";
-import { FunctionName } from "../../messenging/callRemoteFunction";
+import { Function } from "../../types/function";
 
 enum GoToBlockErrors {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR'
@@ -12,7 +12,7 @@ enum GoToBlockErrors {
  * @throws  {Error}     If the block identifier is not of type string or is undefined.
  */
 const goToBlock = (blockId: string): Promise<void> => 
-  callRemoteFunction<void, GoToBlockErrors>(FunctionName.goToBlock, {
+  callRemoteFunction<void, GoToBlockErrors>(Function.goToBlock, {
     blockId
   })
 
