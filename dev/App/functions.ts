@@ -77,10 +77,9 @@ const functions: Record<Function, FunctionOption> = {
     args: [],
     callFunction: async () => {},
   },
-  [Function.goToBlock]: {
-    hide: true,
+  [Function.navigateToBlock]: {
     args: [{
-      name: 'recordId',
+      name: 'blockId',
       value: '',
     }],
     callFunction: async () => {},

@@ -13,6 +13,9 @@ export enum Function {
 
   /* Notification */
   showAlert = 'showAlert',
+
+  /* Navigation */
   goBack = 'goBack',
-  goToBlock = 'goToBlock'
+  navigateToBlock = 'navigateToBlock',
+  navigateToDetail = 'navigateToDetail'
 }
