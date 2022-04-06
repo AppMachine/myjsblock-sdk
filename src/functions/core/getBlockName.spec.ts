@@ -4,12 +4,9 @@ import callRemoteFunction from '../../messenging/callRemoteFunction';
 import getBlockName from './getBlockName';
 import Mock = jest.Mock
 
-const callRemoteFunctionMock = () => jest.fn()
-
-
 jest.mock('../../messenging/callRemoteFunction', () => ({
   __esModule: true,
-  default: console.log
+  default: jest.fn()
 }))
 
 describe('getBlockName', () => {
@@ -21,9 +18,9 @@ describe('getBlockName', () => {
     jest.clearAllMocks()
   })
 
-  it('should call callRemoteFunction with the correct function name', async () => {
+  it('should call callRemoteFunction with the correct function name and arguments', async () => {
     await getBlockName()
 
-    expect(callRemoteFunctionMock).toHaveBeenCalledTimes(1)
+    expect(callRemoteFunction).toHaveBeenCalledWith('getProperty', { "name": "caption" })
   });
 });
