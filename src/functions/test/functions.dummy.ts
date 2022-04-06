@@ -1,0 +1,76 @@
+import { Function } from '../../types/function'
+
+export interface Argument {
+  name: string,
+  value: unknown,
+  hide?: boolean
+}
+
+export interface FunctionOption {
+  args?: Argument[],
+  expectedFunctionName?: Function,
+  expectedOptions?: Record<string, any>
+}
+
+const functionsDummyData: Record<Function, FunctionOption> = {
+  [Function.getBlockName]: {
+    expectedFunctionName: Function.getProperty,
+    expectedOptions: {
+      name: 'caption'
+    }
+  },
+  [Function.getProperty]: {
+    args: [{
+      name: 'name',
+      value: 'asd',
+    }]
+  },
+  [Function.getImageUrl]: {
+    args: [
+      {
+        name: 'imageId',
+        value: 'myImageId',
+      }
+    ]
+  },
+  [Function.showLoader]: {},
+  [Function.hideLoader]: {},
+  [Function.getRecords]: {},
+  [Function.getCurrentRecord]: {},
+  [Function.setCurrentRecordById]: {
+    args: [{
+      name: 'recordId',
+      value: 'myRecordId',
+    }]
+  },
+  [Function.showAlert]: {
+    args: [{
+      name: 'title',
+      value: 'This is an alert!',
+    },
+    {
+      name: 'message',
+      value: 'hello world',
+    },
+    {
+      name: 'buttons',
+      value: [ 'yes', 'no' ],
+      hide: true
+    }],
+  },
+  [Function.goBack]: {},
+  [Function.navigateToBlock]: {
+    args: [{
+      name: 'blockId',
+      value: 'myBlockId',
+    }]
+  },
+  [Function.navigateToDetail]: {
+    args: [{
+      name: 'blockId',
+      value: 'myBlockId',
+    }]
+  }
+}
+
+export default functionsDummyData

@@ -12,3 +12,8 @@ export { default as setCurrentRecordById } from './data/setCurrentRecordById'
 
 /* Notification */
 export { default as showAlert } from './notification/showAlert'
+
+/* Navigation */
+export { default as goBack } from './navigation/goBack'
+export { default as navigateToBlock } from './navigation/navigateToBlock'
+export { default as navigateToDetail } from './navigation/navigateToDetail'

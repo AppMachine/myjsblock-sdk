@@ -1,5 +1,6 @@
 export enum Function {
   /* Core */
+  getBlockName = 'getBlockName', // This should be getProperty 
   getProperty = 'getProperty',
   getImageUrl = 'getImageUrl',
   showLoader = 'showLoader',

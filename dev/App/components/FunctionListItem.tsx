@@ -7,7 +7,7 @@ interface FunctionListitemProps extends FunctionOption {
   name: string
 }
 
-const FunctionListitem = ({ name, args, callFunction, description, hide }: FunctionListitemProps) => {
+const FunctionListitem = ({ name, args = [], callFunction, description, hide }: FunctionListitemProps) => {
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault()
     const inputValues = 
@@ -19,6 +19,8 @@ const FunctionListitem = ({ name, args, callFunction, description, hide }: Funct
       inputValues.forEach(([argName, value]) => {
         localStorage.setItem(`${name}-${argName}`, value)
       })
+    
+    if(!callFunction) return
 
     if (inputValues.length === 1) {
       const [,argument] = inputValues[0]
@@ -50,7 +52,7 @@ const FunctionListitem = ({ name, args, callFunction, description, hide }: Funct
               {description}
             </p>
           ) }
-          { args.map(({ value, name: argName }) => (
+          { args.filter(({hide}) => !hide).map(({ value, name: argName }) => (
             <fieldset key={argName} className="mb-2">
               
               <label htmlFor={`${name}-${argName}`} className="block mb-2 font-bold text-gray-700">
@@ -65,7 +67,7 @@ const FunctionListitem = ({ name, args, callFunction, description, hide }: Funct
               />
             </fieldset>
           ))}
-          <Button type="submit">Call</Button>
+          <Button type="submit" disabled={!callFunction}>Call</Button>
         </form>
       </Collapse>
     </li>

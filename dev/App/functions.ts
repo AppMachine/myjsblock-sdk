@@ -1,5 +1,7 @@
 import setCurrentRecordById from '../../src/functions/data/setCurrentRecordById'
 import { Function } from '../../src/types/function'
+import functionData from '../../src/functions/test/functions.dummy'
+import * as libFunctions from '../../src/functions'
 
 import { 
   getProperty,
@@ -12,51 +14,19 @@ import {
 
 export interface Argument {
   name: string,
-  value: unknown
-}
-
-export interface FunctionOption {
-  args: Argument[],
-  jsonInput?: boolean
-  description?: string
-  callFunction: (...args: any[]) => Promise<unknown> // eslint-disable-line @typescript-eslint/no-explicit-any,
+  value: unknown,
   hide?: boolean
 }
 
-const functions: Record<Function, FunctionOption> = {
-  [Function.getProperty]: {
-    args: [{
-      name: 'propertyName',
-      value: 'caption',
-    }],
-    callFunction: getProperty
-  },
-  [Function.showAlert]: {
-    args: [{
-      name: 'title',
-      value: 'This is an alert!',
-    },
-    {
-      name: 'message',
-      value: 'hello world',
-    }],
-    callFunction: showAlert
-  },
-  [Function.getCurrentRecord]: {
-    args: [],
-    callFunction: getCurrentRecord
-  },
-  [Function.getRecords]: {
-    args: [],
-    callFunction: getRecords
-  },
-  [Function.setCurrentRecordById]: {
-    args: [{
-      name: 'recordId',
-      value: '',
-    }],
-    callFunction: setCurrentRecordById
-  },
+export interface FunctionOption {
+  args?: Argument[],
+  jsonInput?: boolean
+  description?: string
+  callFunction?: (...args: any[]) => Promise<unknown> // eslint-disable-line @typescript-eslint/no-explicit-any,
+  hide?: boolean
+}
+
+const functionOverrides: Partial<{ [key in Function]: FunctionOption }> = {
   [Function.showLoader]: {
     args: [],
     description: 'Shows native loader, will call hideLoader after 2 seconds.',
@@ -68,31 +38,26 @@ const functions: Record<Function, FunctionOption> = {
     }
   },
   [Function.hideLoader]: {
-    hide: true,
-    args: [],
-    callFunction: async () => {},
-  },
-  [Function.goBack]: {
-    hide: true,
-    args: [],
-    callFunction: async () => {},
-  },
-  [Function.navigateToBlock]: {
-    args: [{
-      name: 'blockId',
-      value: '',
-    }],
-    callFunction: async () => {},
-  },
-  [Function.getImageUrl]: {
-    args: [{
-      name: 'imageId',
-      value: '',
-    }],
-    callFunction: async () => {
-      throw new Error('hoi obe')
-    },
+    hide: true
   }
 }
+
+const functions = Object.fromEntries(
+  Object.entries(functionData).map(([functionName, options]) => {
+    let newOptions = options
+
+    if (functionName in functionOverrides) {
+      Object.assign(newOptions, functionOverrides[functionName as Function])
+    }
+
+    if (functionName in libFunctions) {
+      Object.assign(newOptions, {
+        callFunction: (libFunctions as unknown as Record<Function, FunctionOption['callFunction']>)[functionName as Function]
+      })
+    }
+
+    return [functionName, newOptions]
+  })
+)
 
 export default functions
