@@ -1,13 +1,8 @@
-import setCurrentRecordById from '../../src/functions/data/setCurrentRecordById'
 import { Function } from '../../src/types/function'
 import functionData from '../../src/functions/test/functions.dummy'
 import * as libFunctions from '../../src/functions'
 
 import { 
-  getProperty,
-  showAlert,
-  getCurrentRecord,
-  getRecords,
   showLoader,
   hideLoader
 } from '../../src/sdk'
