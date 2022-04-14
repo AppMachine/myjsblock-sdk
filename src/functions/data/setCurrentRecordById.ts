@@ -1,23 +1,23 @@
-import callRemoteFunction from '../../messaging/callRemoteFunction'
-import MyJsBlockFunction from '../../types/function'
+// import callRemoteFunction from '../../messaging/callRemoteFunction'
+// import MyJsBlockFunction from '../../types/function'
 
-type SetCurrentRecordByIdResult = void
+// type SetCurrentRecordByIdResult = void
 
-enum SetCurrentRecordByIdErrors {
+// enum SetCurrentRecordByIdErrors {
 
-}
-/**
- * Set current record by record id.
- * @public
- * @param {string} recordId
- * @returns {Promise<unknown>} Promise
- */
-const setCurrentRecordById = (recordId: string): Promise<SetCurrentRecordByIdResult> =>
-  callRemoteFunction<SetCurrentRecordByIdResult, SetCurrentRecordByIdErrors>(
-    MyJsBlockFunction.setCurrentRecordById,
-    {
-      recordId,
-    },
-  )
+// }
+// /**
+//  * Set current record by record id.
+//  * @public
+//  * @param {string} recordId
+//  * @returns {Promise<unknown>} Promise
+//  */
+// const setCurrentRecordById = (recordId: string): Promise<SetCurrentRecordByIdResult> =>
+//   callRemoteFunction<SetCurrentRecordByIdResult, SetCurrentRecordByIdErrors>(
+//     MyJsBlockFunction.setCurrentRecordById,
+//     {
+//       recordId,
+//     },
+//   )
 
-export default setCurrentRecordById
+// export default setCurrentRecordById

@@ -8,7 +8,7 @@ export { default as hideLoader } from './core/hideLoader'
 /* Data */
 export { default as getRecords } from './data/getRecords'
 export { default as getCurrentRecord } from './data/getCurrentRecord'
-export { default as setCurrentRecordById } from './data/setCurrentRecordById'
+// export { default as setCurrentRecordById } from './data/setCurrentRecordById'
 
 /* Notification */
 export { default as showAlert } from './notification/showAlert'

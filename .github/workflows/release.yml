@@ -27,14 +27,11 @@ jobs:
       - name: Set Auth Token
         run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
 
-      # - name: Create Env file
-      #   run: cp .env.example .env
-
       - name: Build
         run: npm run build
 
-      # - name: Test
-      #   run: npm run test --silent
+      - name: Test
+        run: npm run test --silent
 
       - name: Publish
         run: npm publish

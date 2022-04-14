@@ -9,10 +9,6 @@ enum GetPropertyErrors {
   INVALID_ARGUMENTS = 'INVALID_ARGUMENTS'
 }
 
-// Errors that can be thrown: <code, string>
-// 10100, UNKNOWN_ERROR, Unknown error fetching property.
-// 10101, PROPERTY_NOT_FOUND, provided propertyKey is not found.
-
 /**
  * Gets the given propertyName from the current block.
  * @public
