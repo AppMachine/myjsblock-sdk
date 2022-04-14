@@ -17,6 +17,5 @@ export enum Function {
 
   /* Navigation */
   goBack = 'goBack',
-  navigateToBlock = 'navigateToBlock',
-  navigateToDetail = 'navigateToDetail'
+  navigate = 'navigate',
 }

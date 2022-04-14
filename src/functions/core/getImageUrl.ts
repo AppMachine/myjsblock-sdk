@@ -1,4 +1,4 @@
-import { callRemoteFunction } from "../../messenging";
+import { callRemoteFunction } from "../../messaging";
 import { Function } from "../../types/function";
 
 type GetImageUrlResult = string
@@ -8,8 +8,8 @@ enum GetImageUrlErrors {
 }
 
 export type ImageDimensions = {
-  width: number
-  height: number
+  width: number | null
+  height: number | null
 }
 
 /**
@@ -19,7 +19,7 @@ export type ImageDimensions = {
  * @returns {Promise<string>} Promise with url of an image
  * @throws  {Error} If no valid imageId has been specified.
  */
-const getImageUrl = (imageId: string, { width, height }: ImageDimensions): Promise<GetImageUrlResult> => 
+const getImageUrl = (imageId: string, { width = null, height = null }: ImageDimensions): Promise<GetImageUrlResult> => 
   callRemoteFunction<GetImageUrlResult, GetImageUrlErrors>(Function.getImageUrl, {
     imageId,
     width,

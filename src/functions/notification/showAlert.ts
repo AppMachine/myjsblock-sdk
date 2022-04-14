@@ -1,4 +1,4 @@
-import callRemoteFunction from "../../messenging/callRemoteFunction";
+import callRemoteFunction from "../../messaging/callRemoteFunction";
 import { Function } from "../../types/function";
 
 interface ShowAlertResult {

@@ -1,4 +1,4 @@
-import { callRemoteFunction } from "../../messenging";
+import { callRemoteFunction } from "../../messaging";
 import { Function } from "../../types/function";
 
 type GetCurrentRecordResult <DataResponse> = DataResponse

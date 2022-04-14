@@ -4,7 +4,8 @@ import * as libFunctions from '../../src/functions'
 
 import { 
   showLoader,
-  hideLoader
+  hideLoader,
+  getImageUrl
 } from '../../src/sdk'
 
 export interface Argument {
@@ -30,6 +31,25 @@ const functionOverrides: Partial<{ [key in Function]: FunctionOption }> = {
       
       await new Promise((resolve) =>  setTimeout(resolve, 2000))
       await hideLoader()
+    }
+  },
+  [Function.getImageUrl]: {
+    args: [
+      {
+        name: 'imageId',
+        value: 'a181f12c-3116-11e5-80d0-00155d130a43',
+      },
+      {
+        name: 'width',
+        value: 300
+      },
+      {
+        name: 'height',
+        value: 300
+      }
+    ],
+    callFunction: async (imageId, width, height) => {
+      await getImageUrl(imageId, { width, height })
     }
   },
   [Function.hideLoader]: {

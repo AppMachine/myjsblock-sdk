@@ -29,7 +29,14 @@ const functionsDummyData: Record<Function, FunctionOption> = {
     args: [
       {
         name: 'imageId',
-        value: 'myImageId',
+        value: 'a181f12c-3116-11e5-80d0-00155d130a43',
+      },
+      {
+        name: 'dimensions',
+        value: {
+          width: 300,
+          height: 300
+        }
       }
     ]
   },
@@ -59,18 +66,12 @@ const functionsDummyData: Record<Function, FunctionOption> = {
     }],
   },
   [Function.goBack]: {},
-  [Function.navigateToBlock]: {
+  [Function.navigate]: {
     args: [{
-      name: 'blockId',
-      value: 'myBlockId',
+      name: 'variableName',
+      value: 'Information3',
     }]
   },
-  [Function.navigateToDetail]: {
-    args: [{
-      name: 'blockId',
-      value: 'myBlockId',
-    }]
-  }
 }
 
 export default functionsDummyData

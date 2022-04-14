@@ -1,6 +1,6 @@
 
 // import '../../../test/setup/stubs'
-import callRemoteFunction from '../../messenging/callRemoteFunction';
+import callRemoteFunction from '../../messaging/callRemoteFunction';
 import functionsData from './functions.dummy'
 import * as libFunctions from '..'
 import Mock = jest.Mock
