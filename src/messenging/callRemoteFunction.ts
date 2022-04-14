@@ -22,13 +22,12 @@ const callRemoteFunction = <Response, FunctionErrorCodes>(
         }
     
         reject(error)
-      } else if (!response.value) {
+      } else if (!('value' in response)) {
         const error = new Error('No response value returned.')
-        error.name = MessageApiErrors.NO_VALUE_RETURNED,
+        error.name = MessageApiErrors.NO_VALUE_RETURNED
+
         reject(error)
-        
       } else {
-        
         resolve(response.value)
       }    
     })

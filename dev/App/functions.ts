@@ -41,14 +41,14 @@ const functions = Object.fromEntries(
   Object.entries(functionData).map(([functionName, options]) => {
     let newOptions = options
 
-    if (functionName in functionOverrides) {
-      Object.assign(newOptions, functionOverrides[functionName as Function])
-    }
-
     if (functionName in libFunctions) {
       Object.assign(newOptions, {
         callFunction: (libFunctions as unknown as Record<Function, FunctionOption['callFunction']>)[functionName as Function]
       })
+    }
+
+    if (functionName in functionOverrides) {
+      Object.assign(newOptions, functionOverrides[functionName as Function])
     }
 
     return [functionName, newOptions]
