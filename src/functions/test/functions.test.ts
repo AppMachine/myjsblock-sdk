@@ -1,11 +1,9 @@
-
-// import '../../../test/setup/stubs'
 import callRemoteFunction from '../../messaging/callRemoteFunction';
 import functionsData from './functions.dummy'
 import * as libFunctions from '..'
 import Mock = jest.Mock
 
-jest.mock('../../messenging/callRemoteFunction', () => ({
+jest.mock('../../messaging/callRemoteFunction', () => ({
   __esModule: true,
   default: jest.fn()
 }))

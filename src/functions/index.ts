@@ -16,3 +16,6 @@ export { default as showAlert } from './notification/showAlert'
 /* Navigation */
 export { default as goBack } from './navigation/goBack'
 export { default as navigate } from './navigation/navigate'
+
+/* Media */
+export { default as pickImage } from './media/pickImage'

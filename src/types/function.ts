@@ -10,7 +10,6 @@ export enum Function {
   getRecords = 'getRecords',
   getCurrentRecord = 'getCurrentRecord',
   setCurrentRecordById = 'setCurrentRecordById',
-  // setCurrentRecord = 'setCurrentRecord',
 
   /* Notification */
   showAlert = 'showAlert',
@@ -18,4 +17,7 @@ export enum Function {
   /* Navigation */
   goBack = 'goBack',
   navigate = 'navigate',
+
+  /* Media */
+  pickImage = 'pickImage'
 }

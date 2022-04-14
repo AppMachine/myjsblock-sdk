@@ -38,7 +38,12 @@ const functionsDummyData: Record<Function, FunctionOption> = {
           height: 300
         }
       }
-    ]
+    ],
+    expectedOptions: {
+      imageId: 'a181f12c-3116-11e5-80d0-00155d130a43',
+      width: 300,
+      height: 300,
+    }
   },
   [Function.showLoader]: {},
   [Function.hideLoader]: {},
@@ -72,6 +77,7 @@ const functionsDummyData: Record<Function, FunctionOption> = {
       value: 'Information3',
     }]
   },
+  [Function.pickImage]: {},
 }
 
 export default functionsDummyData
