@@ -1,5 +1,5 @@
-import { callRemoteFunction } from "../../messaging";
-import { Function } from "../../types/function";
+import { callRemoteFunction } from '../../messaging'
+import MyJsBlockFunction from '../../types/function'
 
 type GetImageUrlResult = string
 
@@ -19,11 +19,11 @@ export type ImageDimensions = {
  * @returns {Promise<string>} Promise with url of an image
  * @throws  {Error} If no valid imageId has been specified.
  */
-const getImageUrl = (imageId: string, { width = null, height = null }: ImageDimensions): Promise<GetImageUrlResult> => 
-  callRemoteFunction<GetImageUrlResult, GetImageUrlErrors>(Function.getImageUrl, {
+const getImageUrl = (imageId: string, { width = null, height = null }: ImageDimensions): Promise<GetImageUrlResult> =>
+  callRemoteFunction<GetImageUrlResult, GetImageUrlErrors>(MyJsBlockFunction.getImageUrl, {
     imageId,
     width,
-    height
+    height,
   })
 
 export default getImageUrl

@@ -1,5 +1,5 @@
-import callRemoteFunction from "../../messaging/callRemoteFunction"
-import { Function } from "../../types/function";
+import callRemoteFunction from '../../messaging/callRemoteFunction'
+import MyJsBlockFunction from '../../types/function'
 
 type SetCurrentRecordByIdResult = void
 
@@ -9,15 +9,15 @@ enum SetCurrentRecordByIdErrors {
 /**
  * Set current record by record id.
  * @public
- * @param {string} recordId 
+ * @param {string} recordId
  * @returns {Promise<unknown>} Promise
  */
-const setCurrentRecordById = (recordId: string): Promise<SetCurrentRecordByIdResult> => 
+const setCurrentRecordById = (recordId: string): Promise<SetCurrentRecordByIdResult> =>
   callRemoteFunction<SetCurrentRecordByIdResult, SetCurrentRecordByIdErrors>(
-    Function.setCurrentRecordById, 
+    MyJsBlockFunction.setCurrentRecordById,
     {
-      recordId
-    }
+      recordId,
+    },
   )
 
 export default setCurrentRecordById

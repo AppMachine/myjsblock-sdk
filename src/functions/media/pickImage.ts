@@ -1,5 +1,5 @@
-import { callRemoteFunction } from "../../messaging"
-import { Function } from "../../types/function"
+import { callRemoteFunction } from '../../messaging'
+import MyJsBlockFunction from '../../types/function'
 
 type PickImageResult = string
 
@@ -13,7 +13,7 @@ enum PickImageErrors {
  * @public
  * @returns {Promise<string>} Promise with string of base46 image.
  */
-const pickImage = (): Promise<PickImageResult> => 
-  callRemoteFunction<PickImageResult, PickImageErrors>(Function.pickImage)
+const pickImage = (): Promise<PickImageResult> =>
+  callRemoteFunction<PickImageResult, PickImageErrors>(MyJsBlockFunction.pickImage)
 
 export default pickImage

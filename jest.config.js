@@ -1,8 +1,8 @@
 export default {
-  "transform": {
-    "^.+\\.tsx?$": "esbuild-jest"
+  transform: {
+    '^.+\\.tsx?$': 'esbuild-jest',
   },
-  "globals": {
-    "window": {}
-  }
+  globals: {
+    window: {},
+  },
 }

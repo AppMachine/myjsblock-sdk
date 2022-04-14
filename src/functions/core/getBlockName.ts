@@ -1,8 +1,8 @@
-import callRemoteFunction from "../../messaging/callRemoteFunction";
-import { Function } from "../../types/function";
+import callRemoteFunction from '../../messaging/callRemoteFunction'
+import MyJsBlockFunction from '../../types/function'
 
 interface GetBlockNameResult {
-	name: string;
+  name: string
 }
 
 enum GetBlockNameErrors {
@@ -20,21 +20,21 @@ enum GetBlockNameErrors {
  * @returns {Promise<string>} The name of the block
  * @throws {Error} if unknown error occurs
  * @throws {Error} If property of the name is not found
- * 
+ *
  * ```js
  * import { getBlockName } from '@myjsblock/sdk'
- * 
+ *
  * const myProperty = await getBlockName()
  * //or
  * getBlockName().then(property => {
  *   console.log(property)
  * })
- * 
+ *
  * ```
  */
-const getBlockName = (): Promise<GetBlockNameResult> => 
-  callRemoteFunction<GetBlockNameResult, GetBlockNameErrors>(Function.getProperty, { 
-    name: 'caption'
+const getBlockName = (): Promise<GetBlockNameResult> =>
+  callRemoteFunction<GetBlockNameResult, GetBlockNameErrors>(MyJsBlockFunction.getProperty, {
+    name: 'caption',
   })
 
 export default getBlockName

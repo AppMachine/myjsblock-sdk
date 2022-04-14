@@ -1,6 +1,6 @@
-export enum Function {
+enum MyJsBlockFunction {
   /* Core */
-  getBlockName = 'getBlockName', // This should be getProperty 
+  getBlockName = 'getBlockName', // This should be getProperty
   getProperty = 'getProperty',
   getImageUrl = 'getImageUrl',
   showLoader = 'showLoader',
@@ -21,3 +21,5 @@ export enum Function {
   /* Media */
   pickImage = 'pickImage'
 }
+
+export default MyJsBlockFunction

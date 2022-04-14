@@ -1,5 +1,5 @@
-import { callRemoteFunction } from "../../messaging"
-import { Function } from "../../types/function";
+import { callRemoteFunction } from '../../messaging'
+import MyJsBlockFunction from '../../types/function'
 
 interface GetRecordsResult <DataResponse> {
   data: DataResponse[]
@@ -20,7 +20,7 @@ enum GetRecordsErrors {
  */
 const getRecords = <DataResponse = unknown[]>(): Promise<GetRecordsResult<DataResponse>> =>
   callRemoteFunction<GetRecordsResult<DataResponse>, GetRecordsErrors>(
-    Function.getRecords,
+    MyJsBlockFunction.getRecords,
   )
 
 export default getRecords

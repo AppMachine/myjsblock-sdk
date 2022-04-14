@@ -1,8 +1,8 @@
-import { useCallback, useState } from "react"
+import { useCallback, useState } from 'react'
 
 const useLocalStorageState = (initialValue: any, localStorageKey: string, toggle = false) => {
   const [state, setState] = useState(() => {
-    let localStorageValue = localStorage.getItem(localStorageKey)
+    const localStorageValue = localStorage.getItem(localStorageKey)
 
     if (localStorageValue == null || localStorageValue?.length === 0) {
       return initialValue
@@ -18,8 +18,8 @@ const useLocalStorageState = (initialValue: any, localStorageKey: string, toggle
 
   const updateState = useCallback((newState) => {
     if (toggle) {
-      setState((oldState: boolean)=> {
-        const newValue:boolean = !oldState
+      setState((oldState: boolean) => {
+        const newValue = !oldState
 
         localStorage.setItem(localStorageKey, String(newValue))
 
@@ -28,7 +28,7 @@ const useLocalStorageState = (initialValue: any, localStorageKey: string, toggle
     } else {
       localStorage.setItem(localStorageKey, String(newState))
       setState(newState)
-    }    
+    }
   }, [toggle])
 
   return [state, updateState]

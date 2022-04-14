@@ -1,7 +1,7 @@
-import messageApi from "./messageApi";
-import { RequestId } from "./postMessage";
+import messageApi from './messageApi'
+import { RequestId } from './postMessage'
 
-const DEFAULT_TIMEOUT = 10000; // 10 seconds
+const DEFAULT_TIMEOUT = 10000 // 10 seconds
 
 export enum MessageApiErrors {
   TIMEOUT_EXCEEDED = 'TIMEOUT_EXCEEDED',
@@ -17,7 +17,7 @@ export interface MessageErrorResponse<ErrorCodes> {
 }
 
 export interface MessageResponse<Value> {
-  requestId: RequestId,
+  requestId: RequestId
   value: Value
 }
 
@@ -26,15 +26,15 @@ export type MessageCallback<Response, ErrorCodes> = (
 ) => void
 
 const addMessageListener = <Response, ErrorCodes>(
-  requestId: RequestId, 
+  requestId: RequestId,
   callback: MessageCallback<Response, ErrorCodes>,
-  timeout = DEFAULT_TIMEOUT
+  timeout = DEFAULT_TIMEOUT,
 ) => {
   let timeoutId: number // eslint-disable-line prefer-const
 
   const eventCallback = (event: MessageEvent<string>) => {
-    if (event.source == window) {
-      return;
+    if (event.source === window) {
+      return
     }
 
     const response = JSON.parse(event.data)
@@ -44,11 +44,11 @@ const addMessageListener = <Response, ErrorCodes>(
     }
 
     callback(response)
-    
-    messageApi.removeEventListener('message', eventCallback);
+
+    messageApi.removeEventListener('message', eventCallback)
 
     if (timeoutId) {
-      clearTimeout(timeoutId);
+      clearTimeout(timeoutId)
     }
   }
 
@@ -56,13 +56,13 @@ const addMessageListener = <Response, ErrorCodes>(
     callback({
       requestId,
       error: MessageApiErrors.TIMEOUT_EXCEEDED,
-      message: 'Timeout exceeded, no response from the App'
+      message: 'Timeout exceeded, no response from the App',
     })
-    
-    messageApi.removeEventListener('message', eventCallback);
+
+    messageApi.removeEventListener('message', eventCallback)
   }, timeout) as unknown as number
 
   messageApi.addEventListener('message', eventCallback)
-};
+}
 
 export default addMessageListener

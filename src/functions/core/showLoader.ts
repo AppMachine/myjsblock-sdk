@@ -1,5 +1,5 @@
-import { callRemoteFunction } from "../../messaging"
-import { Function } from "../../types/function";
+import { callRemoteFunction } from '../../messaging'
+import MyJsBlockFunction from '../../types/function'
 
 enum ShowLoaderErrors {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
@@ -10,7 +10,6 @@ enum ShowLoaderErrors {
  * @public
  * @returns {Promise<void>}
  */
-const showLoader = (): Promise<void> => 
-  callRemoteFunction<void, ShowLoaderErrors>(Function.showLoader)
+const showLoader = (): Promise<void> => callRemoteFunction<void, ShowLoaderErrors>(MyJsBlockFunction.showLoader)
 
 export default showLoader

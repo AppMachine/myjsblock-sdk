@@ -1,5 +1,5 @@
-import callRemoteFunction from "../../messaging/callRemoteFunction";
-import { Function } from "../../types/function";
+import callRemoteFunction from '../../messaging/callRemoteFunction'
+import MyJsBlockFunction from '../../types/function'
 
 type GetPropertyResult = string
 
@@ -19,22 +19,22 @@ enum GetPropertyErrors {
  * @param {string} name
  * @returns {Promise<string>} The value of the property
  * @throws {Error} If unknown error occurs
- * @throws {Error} If given `name` parameter is not found 
- * 
+ * @throws {Error} If given `name` parameter is not found
+ *
  * ```js
  * import { getProperty } from '@myjsblock/sdk'
- * 
+ *
  * const myProperty = await getProperty('myProperty')
  * //or
  * getProperty('caption').then(property => {
  *   console.log(property)
  * })
- * 
+ *
  * ```
  */
-const getProperty = (name: string): Promise<GetPropertyResult> => 
-  callRemoteFunction<GetPropertyResult, GetPropertyErrors>(Function.getProperty, { 
-    name
+const getProperty = (name: string): Promise<GetPropertyResult> =>
+  callRemoteFunction<GetPropertyResult, GetPropertyErrors>(MyJsBlockFunction.getProperty, {
+    name,
   })
 
 export default getProperty

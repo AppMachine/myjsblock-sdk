@@ -1,5 +1,5 @@
-import callRemoteFunction from "../../messaging/callRemoteFunction";
-import { Function } from "../../types/function";
+import callRemoteFunction from '../../messaging/callRemoteFunction'
+import MyJsBlockFunction from '../../types/function'
 
 interface ShowAlertResult {
   clicked: string[]
@@ -21,13 +21,11 @@ enum ShowAlertErrors {
  * @throws {Error} If the title parameter is empty
  * @throws {Error} If the buttons parameter is empty
  */
-const showAlert = (
-  title: string, message = '', buttons: string[] = ['ok']
-): Promise<ShowAlertResult> => 
-  callRemoteFunction<ShowAlertResult, ShowAlertErrors>(Function.showAlert, { 
+const showAlert = (title: string, message = '', buttons: string[] = ['ok']): Promise<ShowAlertResult> =>
+  callRemoteFunction<ShowAlertResult, ShowAlertErrors>(MyJsBlockFunction.showAlert, {
     title,
     message,
-    buttons
+    buttons,
   })
 
 export default showAlert

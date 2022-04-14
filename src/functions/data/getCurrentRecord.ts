@@ -1,5 +1,5 @@
-import { callRemoteFunction } from "../../messaging";
-import { Function } from "../../types/function";
+import { callRemoteFunction } from '../../messaging'
+import MyJsBlockFunction from '../../types/function'
 
 type GetCurrentRecordResult <DataResponse> = DataResponse
 
@@ -17,9 +17,9 @@ enum GetCurrentRecordErrors {
  * @throws {Error} if fetching the web-service fails
  * @throws {Error} if function is not called in a data context
  */
-const getCurrentRecord = <DataResponse = unknown>(): Promise<GetCurrentRecordResult<DataResponse>> => 
+const getCurrentRecord = <DataResponse = unknown>(): Promise<GetCurrentRecordResult<DataResponse>> =>
   callRemoteFunction<GetCurrentRecordResult<DataResponse>, GetCurrentRecordErrors>(
-    Function.getCurrentRecord,
+    MyJsBlockFunction.getCurrentRecord,
   )
 
 export default getCurrentRecord

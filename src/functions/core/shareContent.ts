@@ -8,5 +8,5 @@
  * @throws  {Error} If no valid value has been specified.
  */
 export default function shareContent(content: string, imageUrls?: [string], subject?: string) {
-  console.log(content, imageUrls, subject);
+  console.log(content, imageUrls, subject)
 }

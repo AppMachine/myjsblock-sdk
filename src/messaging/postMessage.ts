@@ -1,25 +1,25 @@
-import messageApi, { isInAppWebView } from "./messageApi";
-import { Function } from "../types/function";
+import messageApi, { isInAppWebView } from './messageApi'
+import MyJsBlockFunction from '../types/function'
 
 export type RequestId = string
 
 export interface Message {
   id: RequestId
-  functionName: Function
+  functionName: MyJsBlockFunction
   arguments?: object
 }
 
 const postMessage = (message: Message) => {
   // if (window.debugMyjsblockSdk) {
-    console.debug('POST:', message)
+  console.debug('POST:', message)
   // }
 
   const messageStringified = JSON.stringify(message)
-  
+
   if (isInAppWebView) {
-    messageApi.postMessage(messageStringified);
+    messageApi.postMessage(messageStringified)
   } else {
-    window.parent.postMessage(messageStringified, '*');
+    window.parent.postMessage(messageStringified, '*')
   }
 }
 
