@@ -1,5 +1,5 @@
 import { callRemoteFunction } from '../../messaging'
-import MyJsBlockFunction from '../../types/function'
+import BridgeFunction from '../../types/BridgeFunction'
 
 enum GoBackErrors {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
@@ -11,6 +11,6 @@ enum GoBackErrors {
  * @public
  * @returns {Promise<void>}
  */
-const goBack = (): Promise<void> => callRemoteFunction<void, GoBackErrors>(MyJsBlockFunction.goBack)
+const goBack = (): Promise<void> => callRemoteFunction<void, GoBackErrors>(BridgeFunction.goBack)
 
 export default goBack

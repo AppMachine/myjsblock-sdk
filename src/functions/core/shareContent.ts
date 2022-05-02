@@ -1,5 +1,5 @@
 /**
- * Share content using the Native share functionality from your iOS / Android or Web Browser
+ * Share content using the native share functionality from your iOS / Android or Web Browser
  * @param {string} content
  * @param {Array.string} imageUrls
  * @param {string} subject

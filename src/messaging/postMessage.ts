@@ -1,11 +1,11 @@
 import messageApi, { isInAppWebView } from './messageApi'
-import MyJsBlockFunction from '../types/function'
+import BridgeFunction from '../types/BridgeFunction'
 
 export type RequestId = string
 
 export interface Message {
   id: RequestId
-  functionName: MyJsBlockFunction
+  functionName: BridgeFunction
   arguments?: object
 }
 

@@ -1,4 +1,4 @@
-import MyJsBlockFunction from '../../src/types/function'
+import BridgeFunction from '../../src/types/BridgeFunction'
 import functionData from '../../src/functions/test/functions.dummy'
 import * as libFunctions from '../../src/functions'
 
@@ -22,8 +22,8 @@ export interface FunctionOption {
   hide?: boolean
 }
 
-const functionOverrides: Partial<{ [key in MyJsBlockFunction]: FunctionOption }> = {
-  [MyJsBlockFunction.showLoader]: {
+const functionOverrides: Partial<{ [key in BridgeFunction]: FunctionOption }> = {
+  [BridgeFunction.showLoader]: {
     args: [],
     description: 'Shows native loader, will call hideLoader after 2 seconds.',
     callFunction: async () => {
@@ -33,7 +33,7 @@ const functionOverrides: Partial<{ [key in MyJsBlockFunction]: FunctionOption }>
       await hideLoader()
     },
   },
-  [MyJsBlockFunction.getImageUrl]: {
+  [BridgeFunction.getImageUrl]: {
     args: [
       {
         name: 'imageId',
@@ -52,7 +52,7 @@ const functionOverrides: Partial<{ [key in MyJsBlockFunction]: FunctionOption }>
       await getImageUrl(imageId, { width, height })
     },
   },
-  [MyJsBlockFunction.hideLoader]: {
+  [BridgeFunction.hideLoader]: {
     hide: true,
   },
 }
@@ -63,12 +63,12 @@ const functions = Object.fromEntries(
 
     if (functionName in libFunctions) {
       Object.assign(newOptions, {
-        callFunction: (libFunctions as unknown as Record<MyJsBlockFunction, FunctionOption['callFunction']>)[functionName as MyJsBlockFunction],
+        callFunction: (libFunctions as unknown as Record<BridgeFunction, FunctionOption['callFunction']>)[functionName as BridgeFunction],
       })
     }
 
     if (functionName in functionOverrides) {
-      Object.assign(newOptions, functionOverrides[functionName as MyJsBlockFunction])
+      Object.assign(newOptions, functionOverrides[functionName as BridgeFunction])
     }
 
     return [functionName, newOptions]

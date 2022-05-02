@@ -1,5 +1,5 @@
 import { callRemoteFunction } from '../../messaging'
-import MyJsBlockFunction from '../../types/function'
+import BridgeFunction from '../../types/BridgeFunction'
 
 enum GoToBlockErrors {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
@@ -15,7 +15,7 @@ export type NavigateProperties = Record<string, unknown>
  * @throws  {Error}     If the block identifier is not of type string or is undefined.
  */
 const navigate = (variableName: string, properties: NavigateProperties): Promise<void> =>
-  callRemoteFunction<void, GoToBlockErrors>(MyJsBlockFunction.navigate, {
+  callRemoteFunction<void, GoToBlockErrors>(BridgeFunction.navigate, {
     variableName,
     properties,
   })

@@ -1,5 +1,5 @@
 // import callRemoteFunction from '../../messaging/callRemoteFunction'
-// import MyJsBlockFunction from '../../types/function'
+// import BridgeFunction from '../../types/function'
 
 // type SetCurrentRecordByIdResult = void
 
@@ -14,7 +14,7 @@
 //  */
 // const setCurrentRecordById = (recordId: string): Promise<SetCurrentRecordByIdResult> =>
 //   callRemoteFunction<SetCurrentRecordByIdResult, SetCurrentRecordByIdErrors>(
-//     MyJsBlockFunction.setCurrentRecordById,
+//     BridgeFunction.setCurrentRecordById,
 //     {
 //       recordId,
 //     },

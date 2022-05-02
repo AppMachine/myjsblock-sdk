@@ -1,10 +1,10 @@
 import uid from '../utils/uid'
 import addMessageListener, { MessageApiErrors } from './addMessageListener'
 import postMessage, { Message } from './postMessage'
-import MyJsBlockFunction from '../types/function'
+import BridgeFunction from '../types/BridgeFunction'
 
 const callRemoteFunction = <Response, FunctionErrorCodes>(
-  functionName: MyJsBlockFunction,
+  functionName: BridgeFunction,
   args?: Message['arguments'],
 ): Promise<Response> => new Promise((resolve, reject) => {
     const requestId = uid()

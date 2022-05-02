@@ -1,5 +1,5 @@
 import { callRemoteFunction } from '../../messaging'
-import MyJsBlockFunction from '../../types/function'
+import BridgeFunction from '../../types/BridgeFunction'
 
 type GetCurrentRecordResult <DataResponse> = DataResponse
 
@@ -19,7 +19,7 @@ enum GetCurrentRecordErrors {
  */
 const getCurrentRecord = <DataResponse = unknown>(): Promise<GetCurrentRecordResult<DataResponse>> =>
   callRemoteFunction<GetCurrentRecordResult<DataResponse>, GetCurrentRecordErrors>(
-    MyJsBlockFunction.getCurrentRecord,
+    BridgeFunction.getCurrentRecord,
   )
 
 export default getCurrentRecord

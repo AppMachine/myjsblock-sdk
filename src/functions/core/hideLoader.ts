@@ -1,16 +1,16 @@
 import { callRemoteFunction } from '../../messaging'
-import MyJsBlockFunction from '../../types/function'
+import BridgeFunction from '../../types/BridgeFunction'
 
  enum HideLoaderErrors {
    UNKNOWN_ERROR = 'UNKNOWN_ERROR',
  }
 
 /**
-  * Allows you to hide the native loader overlay
+  * Hide the native loader overlay.
   * @public
   * @returns {Promise<void>} Promise
   */
 const hideLoader = (): Promise<void> =>
-  callRemoteFunction<void, HideLoaderErrors>(MyJsBlockFunction.hideLoader)
+  callRemoteFunction<void, HideLoaderErrors>(BridgeFunction.hideLoader)
 
 export default hideLoader

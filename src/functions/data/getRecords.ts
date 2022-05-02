@@ -1,5 +1,5 @@
 import { callRemoteFunction } from '../../messaging'
-import MyJsBlockFunction from '../../types/function'
+import BridgeFunction from '../../types/BridgeFunction'
 
 interface GetRecordsResult <DataResponse> {
   data: DataResponse[]
@@ -12,15 +12,15 @@ enum GetRecordsErrors {
 }
 
 /**
- * Returns the records form the data context
- * @returns {Array} Promise of items from the data context
+ * Returns the records from the data context
+ * @returns {Promise<GetRecordsResult<DataResponse>>} Promise of items from the data context
  * @throws {Error} if unknown error occurs
  * @throws {Error} if fetching the web-service fails
  * @throws {Error} if function is not called in a data context
  */
 const getRecords = <DataResponse = unknown[]>(): Promise<GetRecordsResult<DataResponse>> =>
   callRemoteFunction<GetRecordsResult<DataResponse>, GetRecordsErrors>(
-    MyJsBlockFunction.getRecords,
+    BridgeFunction.getRecords,
   )
 
 export default getRecords

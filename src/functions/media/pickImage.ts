@@ -1,5 +1,5 @@
 import { callRemoteFunction } from '../../messaging'
-import MyJsBlockFunction from '../../types/function'
+import BridgeFunction from '../../types/BridgeFunction'
 
 type PickImageResult = string
 
@@ -14,6 +14,6 @@ enum PickImageErrors {
  * @returns {Promise<string>} Promise with string of base46 image.
  */
 const pickImage = (): Promise<PickImageResult> =>
-  callRemoteFunction<PickImageResult, PickImageErrors>(MyJsBlockFunction.pickImage)
+  callRemoteFunction<PickImageResult, PickImageErrors>(BridgeFunction.pickImage)
 
 export default pickImage

@@ -1,4 +1,4 @@
-enum MyJsBlockFunction {
+enum BridgeFunction {
   /* Core */
   getBlockName = 'getBlockName', // This should be getProperty
   getProperty = 'getProperty',
@@ -22,4 +22,4 @@ enum MyJsBlockFunction {
   pickImage = 'pickImage'
 }
 
-export default MyJsBlockFunction
+export default BridgeFunction

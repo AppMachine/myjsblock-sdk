@@ -1,4 +1,4 @@
-import MyJsBlockFunction from '../../types/function'
+import BridgeFunction from '../../types/BridgeFunction'
 
 export interface Argument {
   name: string
@@ -8,24 +8,24 @@ export interface Argument {
 
 export interface FunctionOption {
   args?: Argument[]
-  expectedFunctionName?: MyJsBlockFunction
+  expectedFunctionName?: BridgeFunction
   expectedOptions?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-const functionsDummyData: Record<MyJsBlockFunction, FunctionOption> = {
-  [MyJsBlockFunction.getBlockName]: {
-    expectedFunctionName: MyJsBlockFunction.getProperty,
+const functionsDummyData: Record<BridgeFunction, FunctionOption> = {
+  [BridgeFunction.getBlockName]: {
+    expectedFunctionName: BridgeFunction.getProperty,
     expectedOptions: {
       name: 'caption',
     },
   },
-  [MyJsBlockFunction.getProperty]: {
+  [BridgeFunction.getProperty]: {
     args: [{
       name: 'name',
       value: 'asd',
     }],
   },
-  [MyJsBlockFunction.getImageUrl]: {
+  [BridgeFunction.getImageUrl]: {
     args: [
       {
         name: 'imageId',
@@ -45,17 +45,17 @@ const functionsDummyData: Record<MyJsBlockFunction, FunctionOption> = {
       height: 300,
     },
   },
-  [MyJsBlockFunction.showLoader]: {},
-  [MyJsBlockFunction.hideLoader]: {},
-  [MyJsBlockFunction.getRecords]: {},
-  [MyJsBlockFunction.getCurrentRecord]: {},
-  [MyJsBlockFunction.setCurrentRecordById]: {
+  [BridgeFunction.showLoader]: {},
+  [BridgeFunction.hideLoader]: {},
+  [BridgeFunction.getRecords]: {},
+  [BridgeFunction.getCurrentRecord]: {},
+  [BridgeFunction.setCurrentRecordById]: {
     args: [{
       name: 'recordId',
       value: 'myRecordId',
     }],
   },
-  [MyJsBlockFunction.showAlert]: {
+  [BridgeFunction.showAlert]: {
     args: [{
       name: 'title',
       value: 'This is an alert!',
@@ -70,8 +70,8 @@ const functionsDummyData: Record<MyJsBlockFunction, FunctionOption> = {
       hide: true,
     }],
   },
-  [MyJsBlockFunction.goBack]: {},
-  [MyJsBlockFunction.navigate]: {
+  [BridgeFunction.goBack]: {},
+  [BridgeFunction.navigate]: {
     args: [
       {
         name: 'variableName',
@@ -86,7 +86,7 @@ const functionsDummyData: Record<MyJsBlockFunction, FunctionOption> = {
       },
     ],
   },
-  [MyJsBlockFunction.pickImage]: {},
+  [BridgeFunction.pickImage]: {},
 }
 
 export default functionsDummyData

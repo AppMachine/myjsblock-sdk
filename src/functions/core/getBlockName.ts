@@ -1,5 +1,5 @@
 import callRemoteFunction from '../../messaging/callRemoteFunction'
-import MyJsBlockFunction from '../../types/function'
+import BridgeFunction from '../../types/BridgeFunction'
 
 interface GetBlockNameResult {
   name: string
@@ -11,11 +11,10 @@ enum GetBlockNameErrors {
 }
 
 /**
- * Gets the name of the current block.
+ * Get the name of the current block.
  * @public
- * @returns {Promise<string>} The name of the block
- * @throws {Error} if unknown error occurs
- * @throws {Error} If property of the name is not found
+ * @returns {Promise<GetBlockNameResult>} Name of the block
+ * @throws {Error} If an unknown error occurs
  *
  * ```js
  * import { getBlockName } from '@myjsblock/sdk'
@@ -29,7 +28,7 @@ enum GetBlockNameErrors {
  * ```
  */
 const getBlockName = (): Promise<GetBlockNameResult> =>
-  callRemoteFunction<GetBlockNameResult, GetBlockNameErrors>(MyJsBlockFunction.getProperty, {
+  callRemoteFunction<GetBlockNameResult, GetBlockNameErrors>(BridgeFunction.getProperty, {
     name: 'caption',
   })
 

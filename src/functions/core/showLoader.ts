@@ -1,15 +1,15 @@
 import { callRemoteFunction } from '../../messaging'
-import MyJsBlockFunction from '../../types/function'
+import BridgeFunction from '../../types/BridgeFunction'
 
 enum ShowLoaderErrors {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
 }
 
 /**
- * Allows you to show the native loader overlay
+ * Show a native loader overlay.
  * @public
  * @returns {Promise<void>}
  */
-const showLoader = (): Promise<void> => callRemoteFunction<void, ShowLoaderErrors>(MyJsBlockFunction.showLoader)
+const showLoader = (): Promise<void> => callRemoteFunction<void, ShowLoaderErrors>(BridgeFunction.showLoader)
 
 export default showLoader
