@@ -15,8 +15,8 @@ enum GetRecordsErrors {
  * Returns the records from the data context
  * @returns {Promise<GetRecordsResult<DataResponse>>} Promise of items from the data context
  * @throws {Error} if unknown error occurs
- * @throws {Error} if fetching the web-service fails
- * @throws {Error} if function is not called in a data context
+ * @throws {Error} If an unknown error occurs
+ * @throws {Error} If fetching the web-service fails
  */
 const getRecords = <DataResponse = unknown[]>(): Promise<GetRecordsResult<DataResponse>> =>
   callRemoteFunction<GetRecordsResult<DataResponse>, GetRecordsErrors>(

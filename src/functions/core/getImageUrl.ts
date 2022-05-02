@@ -17,7 +17,8 @@ export type ImageDimensions = {
  * Get an image URL based on an image ID
  * @public
  * @param {string} imageId
- * @returns {Promise<string>} Promise with url of an image
+ * @param {object<ImageDimensions>} imageDimensions An object containing a width and a height.
+ * @returns {Promise<string>} Promise with url of an image.
  * @throws  {Error} If no valid imageId has been specified.
  */
 const getImageUrl = (imageId: string, { width = null, height = null }: ImageDimensions): Promise<GetImageUrlResult> =>
