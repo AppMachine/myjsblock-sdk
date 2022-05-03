@@ -49,12 +49,12 @@ const functionsDummyData: Record<BridgeFunction, FunctionOption> = {
   [BridgeFunction.hideLoader]: {},
   [BridgeFunction.getRecords]: {},
   [BridgeFunction.getCurrentRecord]: {},
-  [BridgeFunction.setCurrentRecordById]: {
-    args: [{
-      name: 'recordId',
-      value: 'myRecordId',
-    }],
-  },
+  // [BridgeFunction.setCurrentRecordById]: {
+  //   args: [{
+  //     name: 'recordId',
+  //     value: 'myRecordId',
+  //   }],
+  // },
   [BridgeFunction.showAlert]: {
     args: [{
       name: 'title',
