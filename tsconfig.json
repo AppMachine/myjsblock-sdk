@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM.Iterable", "DOM"],
+    "moduleResolution": "Node",
+    "declaration": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "importHelpers": true,
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "outDir": "dist",
+    "target": "ESNext",
+    "types": ["vite/client", "jest"],
+    "useDefineForClassFields": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src", "dev"]
+}
