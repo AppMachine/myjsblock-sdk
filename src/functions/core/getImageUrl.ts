@@ -1,12 +1,8 @@
 import { callRemoteFunction } from '../../messaging'
+import { ArgumentErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
 type GetImageUrlResult = string
-
-enum GetImageUrlErrors {
-  NO_IMAGE_ID_PROVIDED = 'NO_IMAGE_ID_PROVIDED',
-  INVALID_ARGUMENTS = 'INVALID_ARGUMENTS'
-}
 
 export type ImageDimensions = {
   width: number | null
@@ -22,7 +18,7 @@ export type ImageDimensions = {
  * @throws  {Error} If no valid imageId has been specified.
  */
 const getImageUrl = (imageId: string, { width = null, height = null }: ImageDimensions): Promise<GetImageUrlResult> =>
-  callRemoteFunction<GetImageUrlResult, GetImageUrlErrors>(BridgeFunction.getImageUrl, {
+  callRemoteFunction<GetImageUrlResult, UnknownErrors & ArgumentErrors>(BridgeFunction.getImageUrl, {
     imageId,
     width,
     height,

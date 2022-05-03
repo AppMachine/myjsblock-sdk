@@ -1,8 +1,9 @@
 import { callRemoteFunction } from '../../messaging'
+import { UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
  enum HideLoaderErrors {
-   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
+  OPERATION_NOT_ALLOWED = 'OPERATION_NOT_ALLOWED',
  }
 
 /**
@@ -11,6 +12,6 @@ import BridgeFunction from '../../types/BridgeFunction'
   * @returns {Promise<void>} Promise
   */
 const hideLoader = (): Promise<void> =>
-  callRemoteFunction<void, HideLoaderErrors>(BridgeFunction.hideLoader)
+  callRemoteFunction<void, HideLoaderErrors & UnknownErrors>(BridgeFunction.hideLoader)
 
 export default hideLoader

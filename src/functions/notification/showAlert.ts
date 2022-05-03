@@ -1,14 +1,9 @@
 import callRemoteFunction from '../../messaging/callRemoteFunction'
+import { ArgumentErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
 interface ShowAlertResult {
   clicked: string[]
-}
-
-enum ShowAlertErrors {
-  UNKNOWN_ERROR = 'UNKNOWN_ERROR', // Unknown error fetching property.
-  TITLE_IS_EMPTY = 'TITLE_IS_EMPTY', //  title parameter is empty
-  NO_BUTTONS_PROVIDED = 'NO_BUTTONS_PROVIDED' // Provided content is empty.
 }
 
 /**
@@ -22,7 +17,7 @@ enum ShowAlertErrors {
  * @throws {Error} If the buttons parameter is empty
  */
 const showAlert = (title: string, message = '', buttons: string[] = ['OK']): Promise<ShowAlertResult> =>
-  callRemoteFunction<ShowAlertResult, ShowAlertErrors>(BridgeFunction.showAlert, {
+  callRemoteFunction<ShowAlertResult, UnknownErrors & ArgumentErrors>(BridgeFunction.showAlert, {
     title,
     message,
     buttons,
