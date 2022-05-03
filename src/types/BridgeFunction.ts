@@ -9,7 +9,7 @@ enum BridgeFunction {
   /* Data */
   getRecords = 'getRecords',
   getCurrentRecord = 'getCurrentRecord',
-  setCurrentRecordById = 'setCurrentRecordById',
+  // setCurrentRecordById = 'setCurrentRecordById',
 
   /* Notification */
   showAlert = 'showAlert',
