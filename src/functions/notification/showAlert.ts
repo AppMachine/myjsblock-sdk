@@ -21,7 +21,7 @@ enum ShowAlertErrors {
  * @throws {Error} If the title parameter is empty
  * @throws {Error} If the buttons parameter is empty
  */
-const showAlert = (title: string, message = '', buttons: string[] = ['ok']): Promise<ShowAlertResult> =>
+const showAlert = (title: string, message = '', buttons: string[] = ['OK']): Promise<ShowAlertResult> =>
   callRemoteFunction<ShowAlertResult, ShowAlertErrors>(BridgeFunction.showAlert, {
     title,
     message,
