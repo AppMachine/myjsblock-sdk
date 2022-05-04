@@ -1,13 +1,8 @@
 import callRemoteFunction from '../../messaging/callRemoteFunction'
+import { ArgumentErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
 type GetPropertyResult = string
-
-enum GetPropertyErrors {
-  UNKNOWN_ERROR = 'UNKNOWN_ERROR',
-  PROPERTY_NOT_FOUND = 'PROPERTY_NOT_FOUND',
-  INVALID_ARGUMENTS = 'INVALID_ARGUMENTS'
-}
 
 /**
  * Get the given propertyName from the current block.
@@ -29,7 +24,7 @@ enum GetPropertyErrors {
  * ```
  */
 const getProperty = (name: string): Promise<GetPropertyResult> =>
-  callRemoteFunction<GetPropertyResult, GetPropertyErrors>(BridgeFunction.getProperty, {
+  callRemoteFunction<GetPropertyResult, UnknownErrors & ArgumentErrors>(BridgeFunction.getProperty, {
     name,
   })
 

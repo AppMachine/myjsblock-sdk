@@ -1,4 +1,5 @@
 import { callRemoteFunction } from '../../messaging'
+import { UnknownErrors, ArgumentErrors, ContextErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
 interface GetRecordsResult <DataResponse> {
@@ -6,9 +7,7 @@ interface GetRecordsResult <DataResponse> {
 }
 
 enum GetRecordsErrors {
-  UNKNOWN_ERROR = 'UNKNOWN_ERROR',
-  ERROR_FETCH_WEBSERVICE = 'ERROR_FETCH_WEBSERVICE',
-  MISSING_CONTEXT = 'MISSING_CONTEXT'
+  WEBSERVICE_ERRORS = 'WEBSERVICE_ERRORS',
 }
 
 /**
@@ -19,7 +18,7 @@ enum GetRecordsErrors {
  * @throws {Error} If fetching the web-service fails
  */
 const getRecords = <DataResponse = unknown[]>(): Promise<GetRecordsResult<DataResponse>> =>
-  callRemoteFunction<GetRecordsResult<DataResponse>, GetRecordsErrors>(
+  callRemoteFunction<GetRecordsResult<DataResponse>,  UnknownErrors & ArgumentErrors & ContextErrors & GetRecordsErrors>(
     BridgeFunction.getRecords,
   )
 

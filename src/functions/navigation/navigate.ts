@@ -1,10 +1,6 @@
 import { callRemoteFunction } from '../../messaging'
+import { ArgumentErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
-
-enum GoToBlockErrors {
-  UNKNOWN_ERROR = 'UNKNOWN_ERROR',
-  VARIABLE_NAME_NOT_FOUND = 'VARIABLE_NAME_NOT_FOUND'
-}
 
 export type NavigateProperties = Record<string, unknown>
 
@@ -15,7 +11,7 @@ export type NavigateProperties = Record<string, unknown>
  * @throws  {Error}     If the block identifier is not of type string or is undefined.
  */
 const navigate = (variableName: string, properties: NavigateProperties): Promise<void> =>
-  callRemoteFunction<void, GoToBlockErrors>(BridgeFunction.navigate, {
+  callRemoteFunction<void, UnknownErrors & ArgumentErrors>(BridgeFunction.navigate, {
     variableName,
     properties,
   })
