@@ -87,6 +87,7 @@ const functionsDummyData: Record<BridgeFunction, FunctionOption> = {
     ],
   },
   [BridgeFunction.pickImage]: {},
+  [BridgeFunction.getUserInfo]: {},
 }
 
 export default functionsDummyData
