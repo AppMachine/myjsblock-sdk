@@ -86,7 +86,36 @@ const functionsDummyData: Record<BridgeFunction, FunctionOption> = {
       },
     ],
   },
-  [BridgeFunction.pickImage]: {},
+  [BridgeFunction.pickImage]: {
+    args: [
+      {
+        name: 'imageOptions',
+        value: {
+          maxHeight: undefined,
+          maxWidth: undefined,
+          quality: 100,
+        },
+        hide: true,
+      },
+      {
+        name: 'showCameraOption',
+        value: true,
+        hide: true,
+      },
+      {
+        name: 'showGalleryOption',
+        value: false,
+        hide: true,
+      },
+    ],
+    expectedOptions: {
+      maxWidth: undefined,
+      maxHeight: undefined,
+      quality: 100,
+      showCameraOption: true,
+      showGalleryOption: false,
+    },
+  },
 }
 
 export default functionsDummyData
