@@ -4,7 +4,8 @@ import postMessage, { Message } from './postMessage'
 import BridgeFunction from '../types/BridgeFunction'
 
 declare global {
-  var packageVersion: string;
+  // eslint-disable-next-line no-underscore-dangle
+  const __packageVersion: string
 }
 
 const callRemoteFunction = <Response, FunctionErrorCodes>(
@@ -40,7 +41,7 @@ const callRemoteFunction = <Response, FunctionErrorCodes>(
       id: requestId,
       functionName,
       arguments: args,
-      version: packageVersion
+      version: __packageVersion,
     })
   })
 
