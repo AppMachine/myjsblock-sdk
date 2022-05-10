@@ -3,6 +3,10 @@ import addMessageListener, { MessageApiErrors } from './addMessageListener'
 import postMessage, { Message } from './postMessage'
 import BridgeFunction from '../types/BridgeFunction'
 
+declare global {
+  var packageVersion: string;
+}
+
 const callRemoteFunction = <Response, FunctionErrorCodes>(
   functionName: BridgeFunction,
   args?: Message['arguments'],
@@ -36,6 +40,7 @@ const callRemoteFunction = <Response, FunctionErrorCodes>(
       id: requestId,
       functionName,
       arguments: args,
+      version: packageVersion
     })
   })
 

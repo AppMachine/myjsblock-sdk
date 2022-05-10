@@ -7,6 +7,7 @@ export interface Message {
   id: RequestId
   functionName: BridgeFunction
   arguments?: object
+  version: string
 }
 
 const postMessage = (message: Message) => {

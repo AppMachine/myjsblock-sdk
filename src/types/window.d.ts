@@ -5,5 +5,6 @@ declare global {
     debugMyjsblockSdk: boolean
     myjsblock: Pick<Window, 'postMessage' | 'addEventListener' | 'removeEventListener'>
     flutter_inappwebview?: object
+    packageVersion: string
   }
 }

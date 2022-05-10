@@ -84,6 +84,9 @@ const configs = bundles
         format,
         sourcemap: true,
         preserveModules,
+        globals: {
+          packageVersion: pkg.version
+        }
       },
     })),
   )
