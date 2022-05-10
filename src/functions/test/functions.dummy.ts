@@ -116,6 +116,7 @@ const functionsDummyData: Record<BridgeFunction, FunctionOption> = {
       showGalleryOption: false,
     },
   },
+  [BridgeFunction.getUserInfo]: {},
 }
 
 export default functionsDummyData

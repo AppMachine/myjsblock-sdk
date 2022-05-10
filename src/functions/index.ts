@@ -19,3 +19,6 @@ export { default as navigate } from './navigation/navigate'
 
 /* Media */
 export { default as pickImage } from './media/pickImage'
+
+/* User */
+export { default as getUserInfo } from './user/getUserInfo'

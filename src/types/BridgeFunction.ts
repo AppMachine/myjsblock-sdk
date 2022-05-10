@@ -19,7 +19,10 @@ enum BridgeFunction {
   navigate = 'navigate',
 
   /* Media */
-  pickImage = 'pickImage'
+  pickImage = 'pickImage',
+
+  /* User */
+  getUserInfo = 'getUserInfo',
 }
 
 export default BridgeFunction
