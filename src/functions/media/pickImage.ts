@@ -5,7 +5,7 @@ import BridgeFunction from '../../types/BridgeFunction'
 type PickImageResult = string
 
 enum PickImageErrors {
-  OPERATION_CANCELLED,
+  OPERATION_CANCELLED="OPERATION_CANCELLED",
 }
 
 interface ImageOptions {
