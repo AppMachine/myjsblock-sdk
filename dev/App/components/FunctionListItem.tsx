@@ -10,30 +10,30 @@ interface FunctionListitemProps extends FunctionOption {
 const FunctionListitem = ({ name, args = [], callFunction, description, hide }: FunctionListitemProps) => {
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault()
-    const inputValues = 
+    const inputValues =
       Array
       .from((event.target as unknown) as HTMLInputElement[])
       .filter(({nodeName }) => nodeName === 'INPUT')
       .map(({name: argName, value}) => [argName, value])
-    
+
       inputValues.forEach(([argName, value]) => {
         localStorage.setItem(`${name}-${argName}`, value)
       })
-    
+
     if(!callFunction) return
 
     if (inputValues.length === 1) {
       const [,argument] = inputValues[0]
       callFunction(argument).then((response: unknown) => {
         if(response) {
-          console.log(response)
+          console.log(JSON.stringify(response))
         }
       })
     } else {
       const args = inputValues.map(([, value]) => value)
       callFunction(...args).then((response: unknown) => {
         if(response) {
-          console.log(response)
+          console.log(JSON.stringify(response))
         }
       })
     }
@@ -54,11 +54,11 @@ const FunctionListitem = ({ name, args = [], callFunction, description, hide }: 
           ) }
           { args.filter(({hide}) => !hide).map(({ value, name: argName }) => (
             <fieldset key={argName} className="mb-2">
-              
+
               <label htmlFor={`${name}-${argName}`} className="block mb-2 font-bold text-gray-700">
                 {argName}
               </label>
-              <input 
+              <input
                 type="text"
                 defaultValue={localStorage.getItem(`${name}-${argName}`) ?? String(value)}
                 id={`${name}-${argName}`}
