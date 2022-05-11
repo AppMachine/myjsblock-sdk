@@ -47,7 +47,18 @@ const functionsDummyData: Record<BridgeFunction, FunctionOption> = {
   },
   [BridgeFunction.showLoader]: {},
   [BridgeFunction.hideLoader]: {},
-  [BridgeFunction.getRecords]: {},
+  [BridgeFunction.getRecords]: {
+    args: [
+      {
+        name: 'variableName',
+        value: 'WebService1',
+      },
+      {
+        name: 'parameters',
+        value: {},
+      },
+    ]
+  },
   [BridgeFunction.getCurrentRecord]: {},
   // [BridgeFunction.setCurrentRecordById]: {
   //   args: [{
