@@ -1,7 +1,7 @@
 import './style.css'
 import { showLoader, hideLoader } from '@myjsblock/sdk'
 
-const loadingButton = document.getElementById('loading-button')
+const loadingButton = document.getElementById('loader-button')
 
 const onClick = async () => {
   await showLoader()
