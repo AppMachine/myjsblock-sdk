@@ -21,6 +21,9 @@ module.exports = {
   plugins: [
       "@typescript-eslint"
   ],
+  globals: {
+    __packageVersion: 'readonly'
+  },
   settings: {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
     'import/parsers': {

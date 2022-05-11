@@ -3,7 +3,10 @@ import WindiCSS from 'vite-plugin-windicss'
 
 import React from '@vitejs/plugin-react'
 
-export default defineConfig((env) => ({
+import { readFile } from 'fs/promises';
+import path from 'path';
+
+export default defineConfig(async (env) => ({
   root: env.mode === 'production' || process.env['DEV_APP'] ? 'dev/App': 'dev',
   ...(process.env['DEV_APP'] && {
     server: {
@@ -22,6 +25,11 @@ export default defineConfig((env) => ({
     }),
     React()
   ],
+  define: {
+    __packageVersion: await readFile(
+      path.resolve('./package.json')
+    ).then(JSON.parse).then(pkg => JSON.stringify(pkg.version))
+  },
   build: {
     sourcemap: true,
   },

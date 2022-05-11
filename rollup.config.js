@@ -8,6 +8,7 @@ import license from 'rollup-plugin-license';
 // import resolve from '@rollup/plugin-node-resolve';
 import commonJS from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
+import replace from '@rollup/plugin-replace';
 import dts from "rollup-plugin-dts";
 import pkg from './package.json';
 
@@ -73,6 +74,12 @@ const configs = bundles
           sourcemap: true,
           filename: `stats/${pkg.name}${minify ? '-min' : ''}.html`,
         }),
+        replace({
+          preventAssignment: true,
+          values: {
+            __packageVersion: JSON.stringify(pkg.version)
+          }
+        })
       ].filter(Boolean),
       output: {
         name: outputFileName,
@@ -84,6 +91,9 @@ const configs = bundles
         format,
         sourcemap: true,
         preserveModules,
+        globals: {
+          __packageVersion: pkg.version
+        }
       },
     })),
   )

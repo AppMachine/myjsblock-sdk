@@ -3,6 +3,11 @@ import addMessageListener, { MessageApiErrors } from './addMessageListener'
 import postMessage, { Message } from './postMessage'
 import BridgeFunction from '../types/BridgeFunction'
 
+declare global {
+  // eslint-disable-next-line no-underscore-dangle
+  const __packageVersion: string
+}
+
 const callRemoteFunction = <Response, FunctionErrorCodes>(
   functionName: BridgeFunction,
   args?: Message['arguments'],
@@ -36,6 +41,7 @@ const callRemoteFunction = <Response, FunctionErrorCodes>(
       id: requestId,
       functionName,
       arguments: args,
+      version: __packageVersion,
     })
   })
 
