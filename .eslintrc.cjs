@@ -76,7 +76,8 @@ module.exports = {
     'no-console': 0,
     'no-trailing-spaces': 0,
     'implicit-arrow-linebreak': 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    'react/react-in-jsx-scope': 0,
   },
   ignorePatterns: [
     "dist",
