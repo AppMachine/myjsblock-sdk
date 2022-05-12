@@ -1,6 +1,6 @@
 {
   "name": "@myjsblock/sdk",
-  "version": "0.2.0-beta.4",
+  "version": "0.2.0-beta.5",
   "description": "Javascript SDK that will allow you to build your own AppMachine block",
   "type": "module",
   "source": "src/sdk.ts",
