@@ -13,6 +13,7 @@ enum BridgeFunction {
 
   /* Notification */
   showAlert = 'showAlert',
+  showDialog = 'showDialog',
 
   /* Navigation */
   goBack = 'goBack',

@@ -30,8 +30,8 @@ const FunctionListitem = ({ name, args = [], callFunction, description, hide }: 
         }
       })
     } else {
-      const args = inputValues.map(([, value]) => value)
-      callFunction(...args).then((response: unknown) => {
+      const parameters = inputValues.map(([, value], index) => args[index].serialize != null ? args[index].serialize!(value) : value)
+      callFunction(...parameters).then((response: unknown) => {
         if(response) {
           console.log(JSON.stringify(response))
         }
