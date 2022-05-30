@@ -8,6 +8,7 @@
   "types": "./dist/esm/sdk.d.ts",
   "browser": "./dist/myjsblock-sdk.umd.js",
   "module": "./dist/esm/sdk.js",
+  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "git+https: //github.com/AppMachine/appmachine-js-block-sdk.git"
