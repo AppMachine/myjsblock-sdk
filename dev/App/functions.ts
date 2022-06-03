@@ -12,6 +12,7 @@ export interface Argument {
   name: string
   value: unknown
   hide?: boolean
+  serialize?: (value: string) => unknown
 }
 
 export interface FunctionOption {

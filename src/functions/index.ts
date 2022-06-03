@@ -12,6 +12,7 @@ export { default as getCurrentRecord } from './data/getCurrentRecord'
 
 /* Notification */
 export { default as showAlert } from './notification/showAlert'
+export { default as showDialog } from './notification/showDialog'
 
 /* Navigation */
 export { default as goBack } from './navigation/goBack'
