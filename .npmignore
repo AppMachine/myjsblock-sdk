@@ -4,6 +4,7 @@ tests
 dev
 scripts
 build
+examples
 src
 .github
 rollup.config.js
