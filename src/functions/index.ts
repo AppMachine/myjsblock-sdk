@@ -18,6 +18,8 @@ export * from './data/getCurrentRecord'
 /* Notification */
 export { default as showAlert } from './notification/showAlert'
 export * from './notification/showAlert'
+export { default as showDialog } from './notification/showDialog'
+export * from './notification/showDialog'
 
 /* Navigation */
 export { default as goBack } from './navigation/goBack'

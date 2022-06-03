@@ -4,6 +4,7 @@ export interface Argument {
   name: string
   value: unknown
   hide?: boolean
+  serialize?: (value: string) => unknown
 }
 
 export interface FunctionOption {
@@ -57,7 +58,7 @@ const functionsDummyData: Record<BridgeFunction, FunctionOption> = {
         name: 'parameters',
         value: {},
       },
-    ]
+    ],
   },
   [BridgeFunction.getCurrentRecord]: {},
   // [BridgeFunction.setCurrentRecordById]: {
@@ -79,6 +80,17 @@ const functionsDummyData: Record<BridgeFunction, FunctionOption> = {
       name: 'buttons',
       value: ['yes', 'no'],
       hide: true,
+    }],
+  },
+  [BridgeFunction.showDialog]: {
+    args: [{
+      name: 'title',
+      value: 'This is a dialog!',
+    },
+    {
+      name: 'options',
+      value: JSON.stringify(['Option 1', 'Option 2']),
+      serialize: (input) => JSON.parse(input),
     }],
   },
   [BridgeFunction.goBack]: {},
