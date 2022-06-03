@@ -2,7 +2,7 @@ import { callRemoteFunction } from '../../messaging'
 import { ArgumentErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-type GetImageUrlResult = string
+export type GetImageUrlResult = string
 
 export type ImageDimensions = {
   width: number | null

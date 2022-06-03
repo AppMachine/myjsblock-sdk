@@ -1,5 +1,5 @@
 import BridgeFunction from '../../src/types/BridgeFunction'
-import functionData from '../../src/functions/test/functions.dummy'
+import functionData from '../../src/functions/__test__/functions.dummy'
 import * as libFunctions from '../../src/functions'
 
 import {

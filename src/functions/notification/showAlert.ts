@@ -2,7 +2,7 @@ import callRemoteFunction from '../../messaging/callRemoteFunction'
 import { ArgumentErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-interface ShowAlertResult {
+export interface ShowAlertResult {
   clicked: string[]
 }
 

@@ -2,7 +2,7 @@ import { callRemoteFunction } from '../../messaging'
 import { ArgumentErrors, ContextErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-type GetCurrentRecordResult <DataResponse> = DataResponse
+export type GetCurrentRecordResult <DataResponse> = DataResponse
 
 /**
  * Get the current record from the current data web service context

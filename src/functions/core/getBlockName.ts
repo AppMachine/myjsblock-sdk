@@ -2,7 +2,7 @@ import callRemoteFunction from '../../messaging/callRemoteFunction'
 import { UnknownErrors, ArgumentErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-type GetBlockNameResult = string
+export type GetBlockNameResult = string
 
 /**
  * Get the name of the current block.
