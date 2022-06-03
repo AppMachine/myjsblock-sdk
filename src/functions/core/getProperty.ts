@@ -2,7 +2,7 @@ import callRemoteFunction from '../../messaging/callRemoteFunction'
 import { ArgumentErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-type GetPropertyResult = string
+export type GetPropertyResult = string
 
 /**
  * Get the given propertyName from the current block.

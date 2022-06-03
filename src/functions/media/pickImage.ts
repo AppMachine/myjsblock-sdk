@@ -2,13 +2,13 @@ import { callRemoteFunction } from '../../messaging'
 import { UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-type PickImageResult = string
+export type PickImageResult = string
 
 enum PickImageErrors {
-  OPERATION_CANCELLED="OPERATION_CANCELLED",
+  OPERATION_CANCELLED='OPERATION_CANCELLED',
 }
 
-interface ImageOptions {
+export interface ImageOptions {
   /**
    * Maximum height of the image
    */

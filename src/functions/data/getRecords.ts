@@ -2,7 +2,7 @@ import { callRemoteFunction } from '../../messaging'
 import { UnknownErrors, ArgumentErrors, ContextErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-type GetRecordsResult<DataType> = DataType[]
+export type GetRecordsResult<DataType> = DataType[]
 
 enum GetRecordsErrors {
   MISSING_CONTEXT = 'MISSING_CONTEXT',
@@ -22,14 +22,12 @@ const getRecords = <DataType = unknown>(
   variableName?: string,
   parameters?: Record<string, unknown>,
 ): Promise<GetRecordsResult<DataType>> =>
-    callRemoteFunction<
-  GetRecordsResult<DataType>,
-  UnknownErrors & ArgumentErrors & ContextErrors & GetRecordsErrors>(
-    BridgeFunction.getRecords,
-    {
-      variableName,
-      parameters,
-    },
-  )
+    callRemoteFunction<GetRecordsResult<DataType>, UnknownErrors & ArgumentErrors & ContextErrors & GetRecordsErrors>(
+      BridgeFunction.getRecords,
+      {
+        variableName,
+        parameters,
+      },
+    )
 
 export default getRecords

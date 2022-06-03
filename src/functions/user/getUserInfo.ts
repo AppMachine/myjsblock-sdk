@@ -2,7 +2,7 @@ import { callRemoteFunction } from '../../messaging'
 import { UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-interface GetUserInfoResult {
+export interface GetUserInfoResult {
   /**
    * ID unique to this device
    */
