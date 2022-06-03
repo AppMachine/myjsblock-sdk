@@ -8,6 +8,7 @@
   "types": "./dist/esm/sdk.d.ts",
   "browser": "./dist/myjsblock-sdk.umd.js",
   "module": "./dist/esm/sdk.js",
+  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "git+https: //github.com/AppMachine/appmachine-js-block-sdk.git"
@@ -20,6 +21,7 @@
     "LowCode",
     "Block"
   ],
+  "files": ["dist"],
   "author": "appmachine",
   "license": "MIT",
   "bugs": {
@@ -31,6 +33,7 @@
     "dev:app": "DEV_APP=1 vite --port 4000",
     "test": "jest",
     "test:watch": "jest --watch",
+    "typecheck": "tsc",
     "clean": "rm -rf dist",
     "build:app": "tsc && vite build",
     "build": "npm run clean && rollup -c rollup.config.js",
