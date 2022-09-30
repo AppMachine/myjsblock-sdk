@@ -2,10 +2,6 @@ import callRemoteFunction from '../../messaging/callRemoteFunction'
 import { ArgumentErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-export interface ShowAlertResult {
-  clicked: string[]
-}
-
 /**
  * Shows Alert Message
  * @public
@@ -16,8 +12,8 @@ export interface ShowAlertResult {
  * @throws {Error} If the title parameter is empty
  * @throws {Error} If the buttons parameter is empty
  */
-const showAlert = (title: string, message = '', buttons: string[] = ['OK']): Promise<ShowAlertResult> =>
-  callRemoteFunction<ShowAlertResult, UnknownErrors & ArgumentErrors>(BridgeFunction.showAlert, {
+const showAlert = (title: string, message = '', buttons: string[] = ['OK']): Promise<string> =>
+  callRemoteFunction<string, UnknownErrors & ArgumentErrors>(BridgeFunction.showAlert, {
     title,
     message,
     buttons,

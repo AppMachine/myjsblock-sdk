@@ -2,10 +2,6 @@ import callRemoteFunction from '../../messaging/callRemoteFunction'
 import { ArgumentErrors, UnknownErrors } from '../../types/BridgeErrors'
 import BridgeFunction from '../../types/BridgeFunction'
 
-export interface ShowDialogResult {
-  clicked: string[]
-}
-
 /**
  * Shows Dialog with simple options
  * @public
@@ -15,8 +11,8 @@ export interface ShowDialogResult {
  * @throws {Error} If the title parameter is empty
  * @throws {Error} If the options parameter is empty
  */
-const showDialog = (title: string, options: string[]): Promise<ShowDialogResult> =>
-  callRemoteFunction<ShowDialogResult, UnknownErrors & ArgumentErrors>(BridgeFunction.showDialog, {
+const showDialog = (title: string, options: string[]): Promise<string> =>
+  callRemoteFunction<string, UnknownErrors & ArgumentErrors>(BridgeFunction.showDialog, {
     title,
     options,
   })
