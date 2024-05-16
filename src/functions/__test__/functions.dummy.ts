@@ -93,7 +93,18 @@ const functionsDummyData: Record<BridgeFunction, FunctionOption> = {
       serialize: (input) => JSON.parse(input),
     }],
   },
-  [BridgeFunction.goBack]: {},
+  [BridgeFunction.goBack]: {
+    args: [
+      {
+        name: 'reload',
+        value: false,
+        hide: true,
+      },
+    ],
+    expectedOptions: {
+      reload: false,
+    },
+  },
   [BridgeFunction.navigate]: {
     args: [
       {
